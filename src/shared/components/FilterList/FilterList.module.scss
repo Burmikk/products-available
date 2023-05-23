@@ -1,0 +1,14 @@
+.title {
+    padding-bottom: 10px;
+    &:not(:first-child) {
+        padding-top: 20px;
+    }
+}
+.filter_wrapper {
+    &:not(:last-child) {
+        padding-bottom: 10px;
+    }
+}
+input {
+    margin-right: 10px;
+}

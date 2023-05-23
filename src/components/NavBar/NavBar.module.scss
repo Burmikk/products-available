@@ -1,0 +1,30 @@
+.nav {
+    padding-bottom: 30px;
+    &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        border-bottom: 2px solid grey;
+    }
+}
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.logo {
+    padding-left: 100px;
+}
+.contacts {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+}
+.logo_text {
+    margin-bottom: 10px;
+}
+.logo_img {
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+}
