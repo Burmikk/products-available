@@ -7,7 +7,7 @@ const NavBar = () => {
             <div className={scss.wrapper}>
                 <div className={scss.logo}>
                     <h2 className={scss.logo_text}>Форт Нокс</h2>
-                    <a href="google.com">
+                    <a href="http://google.com">
                         <img className={scss.logo_img} src={logo} alt="logo" />
                     </a>
                 </div>
