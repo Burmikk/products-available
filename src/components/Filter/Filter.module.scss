@@ -1,4 +1,21 @@
 .filter {
     width: 300px;
     padding-top: 20px;
+    background-color: #fff;
+}
+.btn {
+    width: 225px;
+    height: 48px;
+    background: #ffffff;
+    border: 1px solid #121212;
+    border-radius: 4px;
+
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+
+    color: #121212;
+
+    cursor: pointer;
 }

@@ -1,0 +1,56 @@
+@import "../../styles/colors";
+
+.door_list {
+    width: 1094px;
+    // height: 100vh;
+    padding: 35px;
+    background-color: $list_background_color;
+}
+.title_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.58;
+}
+
+.search_wrapper {
+    position: relative;
+}
+
+.input {
+    width: 518px;
+    height: 48px;
+    background: #ffffff;
+    border: 1px solid #c1c1c1;
+    border-radius: 4px;
+    outline: none;
+    padding-left: 10px;
+    padding-right: 60px;
+
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.58;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, -50%);
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}

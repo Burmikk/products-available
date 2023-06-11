@@ -1,0 +1,56 @@
+@import "../../../styles/colors";
+
+.card {
+    width: 250px;
+    height: 529px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 8px;
+}
+.img {
+    width: 171px;
+    height: 330px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+.title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 13px;
+}
+.size {
+    font-size: 14px;
+    line-height: 1.2;
+    &:not(:last-of-type) {
+        margin-bottom: 10px;
+    }
+}
+.no_avalible {
+    color: $not_avalible_color;
+}
+
+.btn {
+    background: #ffffff;
+    width: 145px;
+    height: 40px;
+    border: 1px solid $accent_color;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 24px;
+
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $accent_color;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        background-color: $accent_color;
+        color: #fff;
+    }
+}
