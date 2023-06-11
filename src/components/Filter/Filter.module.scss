@@ -1,19 +1,37 @@
-.filter {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    border: 0;
-    padding: 0;
-    overflow: hidden;
+@import "../../styles/breakpoints";
 
+.filter {
+    position: fixed;
+    min-width: 100vw;
+    height: calc(100vh - 100px);
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    opacity: 0;
+    z-index: 1;
+    transform: translate(-300px, 0);
+    background-color: #fff;
+    pointer-events: none;
+    transition: opacity 1s ease, transform 0.5s ease;
+    overflow: auto;
+
+    @media screen and (min-width: $tablet) {
+        min-width: 350px;
+    }
     @media screen and (min-width: 1200px) {
-        min-width: 300px;
-        padding-left: 30px;
-        height: inherit;
-        background-color: #fff;
         position: relative;
+        pointer-events: auto;
+        opacity: 1;
+        transform: translate(0);
     }
 }
+
+.show_filter {
+    opacity: 1;
+    transform: translate(0);
+    pointer-events: auto;
+}
+
 .btn {
     width: 225px;
     height: 48px;
@@ -25,8 +43,6 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 1.4;
-
     color: #121212;
-
     cursor: pointer;
 }

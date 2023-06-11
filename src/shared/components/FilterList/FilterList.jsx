@@ -3,8 +3,8 @@ const FilterList = ({ filterName, data }) => {
     const result = data.map((item) => {
         return (
             <li className={scss.filter_wrapper} key={item.id}>
-                <input type="checkbox" />
-                <label>{item.name}</label>
+                <input id={item.name} type="checkbox" />
+                <label htmlFor={item.name}>{item.name}</label>
             </li>
         );
     });

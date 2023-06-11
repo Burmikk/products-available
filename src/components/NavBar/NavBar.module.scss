@@ -1,19 +1,33 @@
-.nav {
+.header {
     width: 100%;
     height: 100px;
     background-image: url("../../assets//nav-background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-.wrapper {
-    // display: flex;
-    // justify-content: space-between;
-    // padding-bottom: 10px;
-}
-.logo {
-    padding: 16px 0 16px 50px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+    @media screen and (min-width: 1200px) {
+        position: relative;
+    }
 }
 
-.logo_img {
+.icon_wrapper {
+    padding: 25px;
+    margin-right: 37px;
+    cursor: pointer;
+
+    @media screen and (min-width: 1200px) {
+        display: none;
+    }
+}
+.logo {
+    display: flex;
+    align-items: center;
+
+    @media screen and (min-width: 1200px) {
+        padding: 50px;
+    }
 }
