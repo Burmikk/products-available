@@ -1,31 +1,42 @@
 @import "../../styles/colors";
+@import "../../styles/breakpoints";
 
 .door_list {
     // width: 1094px;
     // height: 100vh;
+    flex-grow: 1;
     padding: 35px;
     background-color: $list_background_color;
 }
 .title_wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
+
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 .title {
     margin: 0;
     font-weight: 400;
     font-size: 24px;
     line-height: 1.58;
+    @media screen and (min-width: $tablet) {
+        margin-right: 50px;
+    }
 }
 
 .search_wrapper {
     position: relative;
+    flex-grow: 1;
+    max-width: 518px;
 }
 
 .input {
-    width: 518px;
-    height: 48px;
+    box-sizing: border-box;
+    width: 100%;
+
     background: #ffffff;
     border: 1px solid #c1c1c1;
     border-radius: 4px;

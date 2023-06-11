@@ -1,7 +1,8 @@
 @import "../../../styles/colors";
 
 .card {
-    width: 250px;
+    flex-basis: 250px;
+    flex-grow: 1;
     height: 529px;
     background-color: #fff;
     display: flex;
