@@ -5,10 +5,10 @@
     // padding: 20px;
 
     @media screen and (min-width: $tablet) {
-        width: 768px;
+        min-width: 768px;
         // padding: 20px 30px;
     }
     @media screen and (min-width: $desktop) {
-        width: 1440px;
+        min-width: 1440px;
     }
 }
