@@ -18,7 +18,7 @@ const Door = ({ img, data }) => {
     //     );
     // });
     return (
-        <div className={scss.card}>
+        <li className={scss.card}>
             <img className={scss.img} src={img} alt="door picture" />
             <h3 className={scss.title}>Крафт Муар Грей</h3>
             <p className={scss.size}>
@@ -28,7 +28,7 @@ const Door = ({ img, data }) => {
                 950 х 2030 / <span className={p9 === 0 ? scss.no_avalible : ""}>права ({p9})</span> / <span className={l9 === 0 ? scss.no_avalible : ""}>ліва ({l9})</span>
             </p>
             <button className={scss.btn}>Забронювати</button>
-        </div>
+        </li>
     );
 };
 export default Door;

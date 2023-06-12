@@ -5,13 +5,25 @@ import scss from "./DoorList.module.scss";
 import img1 from "../../assets/doors-img/20220910_124412.jpg";
 import img2 from "../../assets/doors-img/20220910_125838.jpg";
 import { BsSearch } from "react-icons/bs";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 const DoorsList = () => {
     const [doors, setDoors] = useState([]);
+
     useEffect(() => {
-        // const allDoors = getAllDoors();
-        // setDoors(allDoors);
+        const fetchDoors = async () => {
+            try {
+                const { data } = await getAllDoors();
+                setDoors(data);
+            } catch (error) {
+                console.log(error.message);
+            }
+        };
+        fetchDoors();
     }, []);
+
+    const doorsList = doors.map((item) => <Door key={item.id} img={item.door_model.small_image} />);
+
     return (
         <div className={scss.door_list}>
             <div className={scss.title_wrapper}>
@@ -22,14 +34,20 @@ const DoorsList = () => {
                 </div>
             </div>
             <ul className={scss.list}>
-                <Door img={img1} />
-                <Door img={img2} />
-                <Door img={img1} />
-                <Door img={img2} />
-                <Door img={img1} />
-                <Door img={img2} />
-                <Door img={img1} />
-                <Door img={img2} />
+                {doors.length === 0 ? (
+                    <MagnifyingGlass
+                        visible={true}
+                        height="100"
+                        width="100"
+                        ariaLabel="MagnifyingGlass-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="MagnifyingGlass-wrapper"
+                        glassColor="#c0efff"
+                        color="#ff9400"
+                    />
+                ) : (
+                    doorsList
+                )}
             </ul>
         </div>
     );
