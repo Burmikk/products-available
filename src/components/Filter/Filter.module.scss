@@ -19,6 +19,7 @@
         min-width: 350px;
     }
     @media screen and (min-width: 1200px) {
+        height: inherit;
         position: relative;
         pointer-events: auto;
         opacity: 1;

@@ -19,7 +19,7 @@ const Door = ({ img, data }) => {
     // });
     return (
         <li className={scss.card}>
-            <img className={scss.img} src={img} alt="door picture" />
+            <img className={scss.img} src={img} alt="door" />
             <h3 className={scss.title}>Крафт Муар Грей</h3>
             <p className={scss.size}>
                 850 х 2030 / <span className={p8 === 0 ? scss.no_avalible : ""}>права ({p8})</span> / <span className={l8 === 0 ? scss.no_avalible : ""}>ліва ({l8})</span>

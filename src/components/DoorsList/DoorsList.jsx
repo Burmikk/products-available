@@ -2,8 +2,6 @@ import Door from "../../shared/components/Door/Door";
 import { useEffect, useState } from "react";
 import { getAllDoors } from "shared/api/getAllDoors";
 import scss from "./DoorList.module.scss";
-import img1 from "../../assets/doors-img/20220910_124412.jpg";
-import img2 from "../../assets/doors-img/20220910_125838.jpg";
 import { BsSearch } from "react-icons/bs";
 import { MagnifyingGlass } from "react-loader-spinner";
 
@@ -33,8 +31,9 @@ const DoorsList = () => {
                     <BsSearch className={scss.icon} size={24} />
                 </div>
             </div>
-            <ul className={scss.list}>
-                {doors.length === 0 ? (
+
+            {doors.length === 0 ? (
+                <div className={scss.spiner_wrapper}>
                     <MagnifyingGlass
                         visible={true}
                         height="100"
@@ -42,13 +41,13 @@ const DoorsList = () => {
                         ariaLabel="MagnifyingGlass-loading"
                         wrapperStyle={{}}
                         wrapperClass="MagnifyingGlass-wrapper"
-                        glassColor="#c0efff"
+                        glassColor="#fff"
                         color="#ff9400"
                     />
-                ) : (
-                    doorsList
-                )}
-            </ul>
+                </div>
+            ) : (
+                <ul className={scss.list}>{doorsList} </ul>
+            )}
         </div>
     );
 };

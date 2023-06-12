@@ -3,7 +3,7 @@
 
 .door_list {
     // width: 1094px;
-    // height: 100vh;
+    // height: au;
     flex-grow: 1;
     padding: 35px;
     background-color: $list_background_color;
@@ -67,4 +67,16 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    background-color: $list_background_color;
+}
+.spiner_wrapper {
+    height: calc(100vh - 290px);
+    // height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // padding-top: 200px;
+    @media screen and (min-width: $tablet) {
+        height: calc(100vh - 250px);
+    }
 }
