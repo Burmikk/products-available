@@ -1,11 +1,67 @@
+@import "../../../styles/colors";
+
+.filter_wrapper {
+    margin-bottom: 32px;
+}
+.title_box {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 16px;
+}
 .title {
-    padding-bottom: 10px;
-    &:not(:first-child) {
-        padding-top: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 2.37;
+}
+.reset {
+    font-size: 14px;
+    line-height: 1.4;
+    color: $accent_color;
+    cursor: pointer;
+}
+.filter_item {
+    &:not(:last-child) {
+        margin-bottom: 16px;
     }
 }
-.filter_wrapper {
-    &:not(:last-child) {
-        padding-bottom: 10px;
+
+.label {
+    font-size: 16px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        margin-right: 16px;
+        border-radius: 100%;
+        border: 1px solid $not_avalible_color;
+    }
+}
+
+.input {
+    display: none;
+    // appearance: none;
+    // width: 24px;
+    // height: 24px;
+    // border: 1px solid $not_avalible_color;
+    // border-radius: 100%;
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // cursor: pointer;
+
+    &:checked {
+        background-image: url(../../../assets/check-mark-icon.svg);
+        background-size: 17px 25px;
+        border-color: $accent_color;
+    }
+    &:checked + .label::before {
+        background-color: $accent_color;
+        border-color: $accent_color;
+        box-shadow: inset 0 0 0 4px #fff;
     }
 }

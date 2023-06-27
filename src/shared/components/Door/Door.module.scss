@@ -49,9 +49,12 @@
     color: $accent_color;
     cursor: pointer;
 
-    &:hover,
-    &:focus {
+    &:hover {
         background-color: $accent_color;
         color: #fff;
+    }
+    &:active {
+        background-color: #ffefd9;
+        color: $accent_color;
     }
 }

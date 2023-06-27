@@ -1,4 +1,5 @@
 @import "./styles/styles.scss";
+@import "./styles/_colors.scss";
 
 .main {
     display: flex;
@@ -7,4 +8,16 @@
     @media screen and (min-width: 1200px) {
         padding-top: 0;
     }
+}
+
+.not_found {
+    width: 498px;
+    margin: 100px auto;
+}
+.text {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 38px;
+    color: $accent_color;
 }

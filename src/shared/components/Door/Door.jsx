@@ -1,31 +1,18 @@
 import scss from "./Door.module.scss";
-const Door = ({ img, data }) => {
-    // const avalibleDoorsStyle = !isAvalible ? scss.no_avalible ? ""
-    const l8 = 0;
-    const p8 = 5;
-    const l9 = 2;
-    const p9 = 0;
-
-    // const result = data.map((item) => {
-    //     return (
-    //         <li>
-    //             <p></p>
-    //             <p></p>
-    //             <p></p>
-    //             <p></p>
-    //             <p></p>
-    //         </li>
-    //     );
-    // });
+const Door = ({ img, name, model, left8, left9, right8, right9 }) => {
     return (
         <li className={scss.card}>
             <img className={scss.img} src={img} alt="door" />
-            <h3 className={scss.title}>Крафт Муар Грей</h3>
+            <h3 className={scss.title}>
+                {name} {model}
+            </h3>
             <p className={scss.size}>
-                850 х 2030 / <span className={p8 === 0 ? scss.no_avalible : ""}>права ({p8})</span> / <span className={l8 === 0 ? scss.no_avalible : ""}>ліва ({l8})</span>
+                850 х 2030 /<span className={right8 === 0 ? scss.no_avalible : ""}>права ({right8})</span> /
+                <span className={left8 === 0 ? scss.no_avalible : ""}>ліва ({left8})</span>
             </p>
             <p className={scss.size}>
-                950 х 2030 / <span className={p9 === 0 ? scss.no_avalible : ""}>права ({p9})</span> / <span className={l9 === 0 ? scss.no_avalible : ""}>ліва ({l9})</span>
+                950 х 2030 / <span className={right9 === 0 ? scss.no_avalible : ""}>права ({right9})</span> /
+                <span className={left9 === 0 ? scss.no_avalible : ""}>ліва ({left9})</span>
             </p>
             <button className={scss.btn}>Забронювати</button>
         </li>
