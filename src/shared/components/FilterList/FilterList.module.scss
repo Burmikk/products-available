@@ -6,7 +6,7 @@
 .title_box {
     display: flex;
     align-items: center;
-    gap: 100px;
+    justify-content: space-between;
     margin-bottom: 16px;
 }
 .title {

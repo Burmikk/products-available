@@ -5,8 +5,7 @@
     position: fixed;
     min-width: 100vw;
     height: calc(100vh - 100px);
-    padding-top: 40px;
-    padding-left: 50px;
+    padding: 40px;
     padding-bottom: 20px;
     opacity: 0;
     z-index: 1;
@@ -17,7 +16,7 @@
     overflow: auto;
 
     @media screen and (min-width: $tablet) {
-        min-width: 320px;
+        min-width: 350px;
     }
     @media screen and (min-width: 1200px) {
         height: inherit;

@@ -5,11 +5,10 @@ import { BsSearch } from "react-icons/bs";
 import { MagnifyingGlass } from "react-loader-spinner";
 
 const DoorsList = ({ doors }) => {
-    console.log("doors--->", doors);
     const doorsList = doors.map((item) => (
         <Door
             key={item.id}
-            img={item.door_model.small_image}
+            img={item.door_model.outside_image}
             name={item.collection.name}
             model={item.door_model.name}
             left8={item.left_8}
@@ -23,6 +22,8 @@ const DoorsList = ({ doors }) => {
         <div className={scss.door_list}>
             <div className={scss.title_wrapper}>
                 <h2 className={scss.title}>Залишок дверей на складі</h2>
+
+                {/* Поиск */}
                 {/* <div className={scss.search_wrapper}>
                     <input className={scss.input} type="text" />
                     <BsSearch className={scss.icon} size={24} />

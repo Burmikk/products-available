@@ -2,62 +2,36 @@ import scss from "./Filter.module.scss";
 import FilterList from "../../shared/components/FilterList/FilterList";
 import { useEffect, useState } from "react";
 
-import { getSizes, getCollections, getModels } from "shared/api/fetchDoors";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { selectAllFilters } from "redux/filter/filter-selectors";
 
 const Filter = ({ showFilter, filterResult }) => {
-    // const [sizes, setSizes] = useState([]);
-    const [collections, setCollections] = useState([]);
-    const [models, setModels] = useState([]);
-    const [filterData, setFilterData] = useState();
-    const [inputValue, setInputValue] = useState(null);
+    const [filteredDoors, setFilteredDoors] = useState();
+    console.log("filteredDoors--->", filteredDoors);
+    const [inputValue, setInputValue] = useState({});
     const [radioValue, setRadioValue] = useState();
     const [radioName, setRadioName] = useState();
-
-    useEffect(() => {
-        const fetchCollections = async () => {
-            try {
-                const { data } = await getCollections();
-                setCollections(data);
-            } catch (error) {}
-        };
-        fetchCollections();
-    }, []);
-
-    useEffect(() => {
-        const fetchModels = async () => {
-            try {
-                const { data } = await getModels();
-                setModels(data);
-            } catch (error) {}
-        };
-        fetchModels();
-    }, []);
-
-    // useEffect(() => {
-    //     const fetchSizes = async () => {
-    //         try {
-    //             const { data } = await getSizes();
-    //             setSizes(data);
-    //         } catch (error) {}
-    //     };
-    //     fetchSizes();
-    // }, []);
+    const [size, setSize] = useState({});
+    const allFilters = useSelector(selectAllFilters);
 
     //Пробросить список дверей наверх
     useEffect(() => {
-        filterResult(filterData);
-    }, [filterData]);
+        filterResult(filteredDoors);
+    }, [filteredDoors]);
 
     //Формирует объект для HTTP запроса
     useEffect(() => {
         const handleRadioChange = () => {
-            if (radioValue) {
+            if (radioValue === "delete") {
+                delete inputValue[radioName];
+                delete size[radioName];
+            } else if (radioValue === 0) {
+                setSize({ [radioName]: radioValue });
+            } else if (radioValue > 0) {
                 setInputValue((prevState) => {
                     return { ...prevState, [radioName]: radioValue };
                 });
-            } else if (inputValue && !radioValue) {
-                delete inputValue[radioName];
             }
         };
         handleRadioChange();
@@ -65,10 +39,11 @@ const Filter = ({ showFilter, filterResult }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const { data } = await axios.get("https://doors-service.onrender.com/api/metal-doors/doors/", {
-            params: inputValue,
+            params: { ...inputValue, ...size },
         });
-        setFilterData(data);
+        setFilteredDoors(data.results);
     };
 
     const addRadioValue = (value) => {
@@ -80,24 +55,19 @@ const Filter = ({ showFilter, filterResult }) => {
     };
 
     const filterStyle = showFilter ? `${scss.filter} ${scss.show_filter}` : ` ${scss.filter}`;
-
+    const filterList = allFilters.map((item, index) => (
+        <FilterList
+            key={index}
+            filterName={item.name}
+            filterTitle={item.title}
+            data={item.data}
+            getRadioValue={addRadioValue}
+            getRadioName={addRadioName}
+        />
+    ));
     return (
         <form className={filterStyle} onSubmit={handleSubmit}>
-            <FilterList
-                getRadioValue={addRadioValue}
-                getRadioName={addRadioName}
-                name="collection"
-                filterName="Колекція"
-                data={collections}
-            />
-            <FilterList
-                getRadioValue={addRadioValue}
-                getRadioName={addRadioName}
-                name="door_model"
-                filterName="Модель"
-                data={models}
-            />
-            {/* <FilterList filterName="Розмір / Відкривання" data={sizes} /> */}
+            {filterList}
             <button type="submit" className={scss.btn}>
                 Показати
             </button>
