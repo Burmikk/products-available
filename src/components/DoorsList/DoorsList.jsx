@@ -1,36 +1,22 @@
 import Door from "../../shared/components/Door/Door";
-import { useEffect, useState } from "react";
 import scss from "./DoorList.module.scss";
 import { BsSearch } from "react-icons/bs";
 import { MagnifyingGlass } from "react-loader-spinner";
+import { useSelector } from "react-redux";
+import { selectAllDoors, selectIsLoading } from "redux/doors/doors-selectors";
 
-const DoorsList = ({ doors }) => {
-    const doorsList = doors.map((item) => (
-        <Door
-            key={item.id}
-            img={item.door_model.outside_image}
-            name={item.collection.name}
-            model={item.door_model.name}
-            left8={item.left_8}
-            left9={item.left_9}
-            right8={item.right_8}
-            right9={item.right_9}
-        />
-    ));
+const DoorsList = () => {
+    const doors = useSelector(selectAllDoors);
+    const isLoading = useSelector(selectIsLoading);
 
-    return (
-        <div className={scss.door_list}>
-            <div className={scss.title_wrapper}>
-                <h2 className={scss.title}>Залишок дверей на складі</h2>
+    const doorsList = doors.map((item) => <Door door={item} key={item.id} />);
 
-                {/* Поиск */}
-                {/* <div className={scss.search_wrapper}>
-                    <input className={scss.input} type="text" />
-                    <BsSearch className={scss.icon} size={24} />
-                </div> */}
-            </div>
-
-            {doors.length === 0 ? (
+    if (isLoading) {
+        return (
+            <div className={scss.door_list}>
+                <div className={scss.title_wrapper}>
+                    <h2 className={scss.title}>Залишок дверей на складі</h2>
+                </div>
                 <div className={scss.spiner_wrapper}>
                     <MagnifyingGlass
                         visible={true}
@@ -43,10 +29,35 @@ const DoorsList = ({ doors }) => {
                         color="#ff9400"
                     />
                 </div>
-            ) : (
+            </div>
+        );
+    } else if (doors.length === 0) {
+        return (
+            <div className={scss.door_list}>
+                <div className={scss.title_wrapper}>
+                    <h2 className={scss.title}>Залишок дверей на складі</h2>
+                </div>
+                <div className={scss.not_found}>
+                    <h2 className={scss.text}> Нажаль, у наявності зараз нічого немає за вашим запитом</h2>
+                </div>
+            </div>
+        );
+    } else {
+        return (
+            <div className={scss.door_list}>
+                <div className={scss.title_wrapper}>
+                    <h2 className={scss.title}>Залишок дверей на складі</h2>
+
+                    {/* Поиск */}
+                    {/* <div className={scss.search_wrapper}>
+                        <input className={scss.input} type="text" />
+                        <BsSearch className={scss.icon} size={24} />
+                    </div> */}
+                </div>
+
                 <ul className={scss.list}>{doorsList} </ul>
-            )}
-        </div>
-    );
+            </div>
+        );
+    }
 };
 export default DoorsList;

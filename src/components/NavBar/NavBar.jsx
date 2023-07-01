@@ -1,14 +1,14 @@
 import scss from "./NavBar.module.scss";
 import logo from "../../assets/logo.svg";
 import { BiMenu } from "react-icons/bi";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectShowFilter } from "redux/filter/filter-selectors";
+import { showFilter } from "redux/filter/filter-slice";
 
-const NavBar = ({ filterStatus }) => {
-    const [show, setShow] = useState(false);
-
-    useEffect(() => {
-        filterStatus(show);
-    }, [show, filterStatus]);
+const NavBar = () => {
+    const show = useSelector(selectShowFilter);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (show) {
@@ -32,7 +32,7 @@ const NavBar = ({ filterStatus }) => {
     }, [show]);
 
     const toggelShowFilter = () => {
-        setShow(!show);
+        dispatch(showFilter(!show));
     };
     return (
         <header className={scss.header}>

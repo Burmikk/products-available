@@ -1,18 +1,19 @@
 import scss from "./Door.module.scss";
-const Door = ({ img, name, model, left8, left9, right8, right9 }) => {
+const Door = ({ door }) => {
+    console.log("door--->", door);
     return (
         <li className={scss.card}>
-            <img className={scss.img} src={img} alt="door" />
+            <img className={scss.img} src={door.door_model.outside_image} alt="door" />
             <h3 className={scss.title}>
-                {name} {model}
+                {door.collection.name} {door.door_model.name}
             </h3>
             <p className={scss.size}>
-                850 х 2030 /<span className={right8 === 0 ? scss.no_avalible : ""}>права ({right8})</span> /
-                <span className={left8 === 0 ? scss.no_avalible : ""}>ліва ({left8})</span>
+                850 х 2030 /<span className={door.right_8 === 0 ? scss.no_avalible : ""}>права ({door.right_8})</span> /
+                <span className={door.left_8 === 0 ? scss.no_avalible : ""}>ліва ({door.left_8})</span>
             </p>
             <p className={scss.size}>
-                950 х 2030 / <span className={right9 === 0 ? scss.no_avalible : ""}>права ({right9})</span> /
-                <span className={left9 === 0 ? scss.no_avalible : ""}>ліва ({left9})</span>
+                950 х 2030 / <span className={door.right_9 === 0 ? scss.no_avalible : ""}>права ({door.right_9})</span>{" "}
+                /<span className={door.left_9 === 0 ? scss.no_avalible : ""}>ліва ({door.left_9})</span>
             </p>
             <button className={scss.btn}>Забронювати</button>
         </li>

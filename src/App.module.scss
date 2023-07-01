@@ -3,21 +3,10 @@
 
 .main {
     display: flex;
+    height: calc(100vh - 100px);
     background-color: $list_background_color;
     padding-top: 100px;
     @media screen and (min-width: 1200px) {
         padding-top: 0;
     }
-}
-
-.not_found {
-    width: 498px;
-    margin: 100px auto;
-}
-.text {
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 38px;
-    color: $accent_color;
 }

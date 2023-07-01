@@ -7,3 +7,9 @@ export const instance = axios.create({
 export const getAllDoors = () => {
     return instance.get("doors/");
 };
+
+export const getFilteredDoors = (values) => {
+    return instance.get("doors/", {
+        params: values,
+    });
+};

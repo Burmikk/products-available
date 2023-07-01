@@ -3,7 +3,7 @@
 
 .door_list {
     // width: 1094px;
-    // height: au;
+    height: inherit;
     flex-grow: 1;
     padding: 35px;
     background-color: $list_background_color;
@@ -70,13 +70,18 @@
     background-color: $list_background_color;
 }
 .spiner_wrapper {
-    height: calc(100vh - 290px);
-    // height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // padding-top: 200px;
-    @media screen and (min-width: $tablet) {
-        height: calc(100vh - 250px);
-    }
+    margin-top: 100px;
+    text-align: center;
+}
+
+.not_found {
+    width: 498px;
+    margin: 100px auto;
+}
+.text {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 38px;
+    color: $accent_color;
 }

@@ -3,6 +3,7 @@ import { fetchFilter } from "./filter-operations";
 
 const initialState = {
     filters: [],
+    showFilter: false,
     error: null,
 };
 
@@ -21,6 +22,12 @@ const filterSlice = createSlice({
                 state.error = payload;
             });
     },
+    reducers: {
+        showFilter: (state, { payload }) => {
+            state.showFilter = payload;
+        },
+    },
 });
 
+export const { showFilter } = filterSlice.actions;
 export default filterSlice.reducer;
