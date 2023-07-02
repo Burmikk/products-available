@@ -1,12 +1,14 @@
+import { Link, useLocation } from "react-router-dom";
 import scss from "./Door.module.scss";
 const Door = ({ door }) => {
-    console.log("door--->", door);
     return (
         <li className={scss.card}>
-            <img className={scss.img} src={door.door_model.outside_image} alt="door" />
-            <h3 className={scss.title}>
-                {door.collection.name} {door.door_model.name}
-            </h3>
+            <Link to={`/${door.id}`}>
+                <img className={scss.img} src={door.door_model.outside_image} alt="door" />
+                <h3 className={scss.title}>
+                    {door.collection.name} {door.door_model.name}
+                </h3>
+            </Link>
             <p className={scss.size}>
                 850 х 2030 /<span className={door.right_8 === 0 ? scss.no_avalible : ""}>права ({door.right_8})</span> /
                 <span className={door.left_8 === 0 ? scss.no_avalible : ""}>ліва ({door.left_8})</span>

@@ -35,7 +35,7 @@ const FilterList = ({ filterTitle, data, filterName, getRadioValue, getRadioName
         return (
             <li className={scss.filter_item} key={item.id}>
                 <input
-                    onChange={(e) => isChecked(e, filterName)}
+                    onClick={(e) => isChecked(e, filterName)}
                     className={scss.input}
                     id={item.name}
                     name={filterName === "size_side" ? item.value : filterName}

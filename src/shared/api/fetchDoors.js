@@ -13,3 +13,7 @@ export const getFilteredDoors = (values) => {
         params: values,
     });
 };
+
+export const getDoorCard = (id) => {
+    return instance.get(`doors/${id}/`);
+};

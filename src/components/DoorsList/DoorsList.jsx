@@ -1,4 +1,4 @@
-import Door from "../../shared/components/Door/Door";
+import Door from "./Door/Door";
 import scss from "./DoorList.module.scss";
 import { BsSearch } from "react-icons/bs";
 import { MagnifyingGlass } from "react-loader-spinner";
