@@ -1,5 +1,4 @@
 import scss from "./Filter.module.scss";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { selectShowFilter } from "redux/filter/filter-selectors";
 import { useSelector, useDispatch } from "react-redux";
@@ -38,7 +37,7 @@ const Filter = () => {
             }
         };
         handleRadioChange();
-    }, [radioValue, radioName]);
+    }, [radioValue, radioName, size, inputValue]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

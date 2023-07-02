@@ -1,6 +1,5 @@
 import Door from "./Door/Door";
 import scss from "./DoorList.module.scss";
-import { BsSearch } from "react-icons/bs";
 import { MagnifyingGlass } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { selectAllDoors, selectIsLoading } from "redux/doors/doors-selectors";
@@ -47,12 +46,6 @@ const DoorsList = () => {
             <div className={scss.door_list}>
                 <div className={scss.title_wrapper}>
                     <h2 className={scss.title}>Залишок дверей на складі</h2>
-
-                    {/* Поиск */}
-                    {/* <div className={scss.search_wrapper}>
-                        <input className={scss.input} type="text" />
-                        <BsSearch className={scss.icon} size={24} />
-                    </div> */}
                 </div>
 
                 <ul className={scss.list}>{doorsList} </ul>

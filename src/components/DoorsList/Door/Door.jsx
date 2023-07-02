@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import scss from "./Door.module.scss";
 const Door = ({ door }) => {
     return (

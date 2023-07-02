@@ -14,7 +14,7 @@ const DoorCard = () => {
             } catch (error) {}
         };
         fetchCard();
-    }, []);
+    }, [params.doorId]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

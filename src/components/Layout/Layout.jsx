@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     useEffect(() => {
         dispatch(fetchFilter());
         dispatch(fetchAllDoors());
-    }, []);
+    }, [dispatch]);
 
     return <>{children}</>;
 };

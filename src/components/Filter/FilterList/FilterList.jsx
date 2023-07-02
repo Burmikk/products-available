@@ -11,7 +11,7 @@ const FilterList = ({ filterTitle, data, filterName, getRadioValue, getRadioName
             getRadioValue(selectedValue);
             getRadioName(selectedName);
         }
-    }, [selectedValue, selectedName]);
+    }, [selectedValue, selectedName, getRadioName, getRadioValue]);
 
     const isChecked = (e, filterName) => {
         const { name, value } = e.target;
