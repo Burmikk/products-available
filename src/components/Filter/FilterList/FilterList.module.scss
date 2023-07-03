@@ -1,7 +1,11 @@
 @import "../../../styles/colors";
 
 .filter_wrapper {
+    position: relative;
     margin-bottom: 32px;
+}
+.new_styles {
+    margin-bottom: 50px;
 }
 .title_box {
     display: flex;
@@ -20,6 +24,14 @@
     color: $accent_color;
     cursor: pointer;
 }
+.filter_list {
+    overflow: hidden;
+    transition: all 1s ease;
+}
+.show_list {
+    overflow: auto;
+}
+
 .filter_item {
     &:not(:last-child) {
         margin-bottom: 16px;
@@ -65,3 +77,18 @@
         box-shadow: inset 0 0 0 4px #fff;
     }
 }
+
+.showBtn {
+    position: absolute;
+    bottom: -40px;
+    // right: 50%;
+    // transform: translateX(50%);
+    font-size: 14px;
+    line-height: 1.4;
+    color: $accent_color;
+    cursor: pointer;
+}
+// .showMore {
+//     position: static;
+//     margin-top: 25px;
+// }

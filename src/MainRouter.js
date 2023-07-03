@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "pages/Home/Home";
-import DoorCard from "pages/Home/DoorCard/DoorCard";
+import DoorCard from "pages/DoorCard/DoorCard";
 import scss from "./App.module.scss";
 
 const MainRouter = () => {

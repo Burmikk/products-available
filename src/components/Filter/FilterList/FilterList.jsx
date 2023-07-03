@@ -1,10 +1,32 @@
 import scss from "./FilterList.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const FilterList = ({ filterTitle, data, filterName, getRadioValue, getRadioName }) => {
     const [selectedValue, setSelectedValue] = useState();
     const [selectedName, setSelectedName] = useState();
     const [checked, setChecked] = useState();
+    const [showMore, setShowMore] = useState(false);
+    const [currentHeight, setCurrentHeight] = useState();
+    const [smallHeight, setSmallHeight] = useState();
+
+    const elementRef = useRef(null);
+    // используя ссылку на элемент получаем его высоту
+    // и записываем в стейт при первом рендере
+    useEffect(() => {
+        if (elementRef.current) {
+            const elementHeigth = elementRef.current.clientHeight;
+            setCurrentHeight(elementHeigth);
+        }
+    }, []);
+    // когда появится реальная высота элемента
+    // записываем в стейт высоту которая должна быть у элемента в свернутом виде
+    // и ниже инлайново присваивем по нажатии кнопки либо общую либо свернутую высоту
+    useEffect(() => {
+        if (currentHeight) {
+            const newHeight = 145;
+            setSmallHeight(newHeight);
+        }
+    }, [currentHeight]);
 
     useEffect(() => {
         if (selectedName) {
@@ -26,12 +48,16 @@ const FilterList = ({ filterTitle, data, filterName, getRadioValue, getRadioName
         }
     };
 
+    const handleShowMore = () => {
+        setShowMore(!showMore);
+    };
+
     const filterReset = () => {
         setChecked("");
         setSelectedValue("delete");
     };
 
-    const filterItem = data.map((item) => {
+    const filterItem = data.map((item, index, arr) => {
         return (
             <li className={scss.filter_item} key={item.id}>
                 <input
@@ -51,15 +77,25 @@ const FilterList = ({ filterTitle, data, filterName, getRadioValue, getRadioName
         );
     });
 
+    const showListStyles = showMore ? `${scss.filter_list} ${scss.show_list}` : scss.filter_list;
+    const minLength = data.length > 4 ? `${scss.filter_wrapper} ${scss.new_styles}` : scss.filter_wrapper;
+
     return (
-        <div className={scss.filter_wrapper}>
+        <div className={minLength}>
             <div className={scss.title_box}>
                 <h2 className={scss.title}>{filterTitle}</h2>
                 <p className={scss.reset} onClick={filterReset}>
                     Скинути
                 </p>
             </div>
-            <ul className={scss.filter_list}>{filterItem}</ul>
+            <ul style={{ height: showMore ? currentHeight : smallHeight }} ref={elementRef} className={showListStyles}>
+                {filterItem}
+            </ul>
+            {data.length > 4 && (
+                <p className={scss.showBtn} onClick={handleShowMore}>
+                    {showMore ? "Згорнути" : "Показати всі"}
+                </p>
+            )}
         </div>
     );
 };

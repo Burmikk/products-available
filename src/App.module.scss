@@ -3,7 +3,7 @@
 
 .main {
     display: flex;
-    height: calc(100vh - 100px);
+    min-height: 100vh;
     padding-top: 100px;
     @media screen and (min-width: 1200px) {
         padding-top: 0;
