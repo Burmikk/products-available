@@ -8,7 +8,7 @@ import { fetchReservation } from "redux/doors/doors-operations";
 
 const FormInfo = ({ isSelect }) => {
     const [select, setSelect] = useState(isSelect);
-    const [name, setName] = useState("");
+    // const [name, setName] = useState("");
     const dispatch = useDispatch();
     const formValue = useSelector(selectFormValue);
     const handleClose = () => {
@@ -16,8 +16,8 @@ const FormInfo = ({ isSelect }) => {
     };
 
     const handleInputChange = (e) => {
-        const { value } = e.target;
-        setName(value);
+        // const { value } = e.target;
+        // setName(value);
     };
 
     const handleSelect = (e) => {
@@ -31,7 +31,6 @@ const FormInfo = ({ isSelect }) => {
             door_id: formValue.id,
             position: select,
         };
-        console.log("value--->", value);
         dispatch(fetchReservation(value));
     };
     const formattedPrice = formValue.price.toLocaleString();

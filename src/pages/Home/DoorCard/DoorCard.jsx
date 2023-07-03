@@ -31,15 +31,7 @@ const DoorCard = () => {
         const formattedPrice = card.door_model.retail_price.toLocaleString();
         return (
             <>
-                {isFormShow && (
-                    <ReserveForm
-                        isSelect={select}
-                        img={card.door_model.outside_image}
-                        title={card.description.name}
-                        price={formattedPrice}
-                        id={card.id}
-                    />
-                )}
+                {isFormShow && <ReserveForm isSelect={select} />}
                 <div className={scss.card}>
                     <Link className={scss.link} to={"/"}>
                         На головну

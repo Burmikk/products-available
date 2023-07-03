@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import scss from "./Door.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { showReserv } from "redux/doors/doors-slice";
 import { setFormValue } from "redux/doors/doors-slice";
 

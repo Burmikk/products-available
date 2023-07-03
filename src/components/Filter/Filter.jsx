@@ -35,7 +35,8 @@ const Filter = () => {
             }
         };
         handleRadioChange();
-    }, [radioValue, radioName, size]);
+        // eslint-disable-next-line
+    }, [radioValue, radioName]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
