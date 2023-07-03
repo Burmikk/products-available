@@ -12,10 +12,8 @@ const Filter = () => {
 
     //Хранит значение выбраных фильтров в поле размеры
     const [size, setSize] = useState({});
-    console.log("size--->", size);
     //Хранит значение выбраных фильтров (кроме size)
     const [inputValue, setInputValue] = useState({});
-    console.log("inputValue--->", inputValue);
     //Берет из стейта все существующие фильтра для отрисовки
     const allFilters = useSelector(selectAllFilters);
     //Берет из стейта состояние фильтра (показывать или скрыть)
@@ -37,7 +35,7 @@ const Filter = () => {
             }
         };
         handleRadioChange();
-    }, [radioValue, radioName, size, inputValue]);
+    }, [radioValue, radioName, size]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

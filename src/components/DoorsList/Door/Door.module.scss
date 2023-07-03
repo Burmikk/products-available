@@ -3,36 +3,54 @@
 .card {
     flex-basis: 250px;
     flex-grow: 1;
-    height: 529px;
+    height: 575px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     border-radius: 8px;
     align-items: center;
 }
 .img {
     width: 171px;
     height: 330px;
-    margin-bottom: 20px;
+    margin: 0 auto;
+    margin-bottom: 22px;
     cursor: pointer;
 }
 .title {
     font-weight: 600;
     font-size: 18px;
     line-height: 1.2;
-    margin-bottom: 13px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &::after {
+        content: "";
+        margin-top: 9px;
+        display: block;
+        border-bottom: 1px solid $accent_color;
+        width: 221px;
+    }
 }
 .size {
     font-size: 14px;
     line-height: 1.2;
-    &:not(:last-of-type) {
+    &:first-of-type {
         margin-bottom: 10px;
     }
 }
+
 .no_avalible {
     color: $not_avalible_color;
 }
-
+.price {
+    font-size: 16px;
+    line-height: 1.2;
+    margin-top: 16px;
+}
 .btn {
     background: #ffffff;
     width: 145px;
@@ -40,7 +58,7 @@
     border: 1px solid $accent_color;
     border-radius: 4px;
     margin: 0 auto;
-    margin-top: 24px;
+    margin-top: 16px;
 
     font-family: "Open Sans";
     font-weight: 600;
@@ -54,7 +72,7 @@
         color: #fff;
     }
     &:active {
-        background-color: #ffefd9;
-        color: $accent_color;
+        background-color: $second_accent_color;
+        color: #fff;
     }
 }

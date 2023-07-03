@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectShowFilter } from "redux/filter/filter-selectors";
 import { showFilter } from "redux/filter/filter-slice";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     const show = useSelector(selectShowFilter);
@@ -40,9 +41,9 @@ const NavBar = () => {
                 <div className={scss.icon_wrapper} onClick={toggelShowFilter}>
                     <BiMenu className={scss.icon} size={36} />
                 </div>
-                <a href="/">
+                <Link to="/">
                     <img className={scss.logo_img} src={logo} alt="logo" />
-                </a>
+                </Link>
             </div>
         </header>
     );

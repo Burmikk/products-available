@@ -17,3 +17,7 @@ export const getFilteredDoors = (values) => {
 export const getDoorCard = (id) => {
     return instance.get(`doors/${id}/`);
 };
+
+export const reservation = (value) => {
+    return instance.post(`/reservation/`, { ...value });
+};

@@ -1,0 +1,23 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(18, 18, 18, 0.7);
+    z-index: 1200;
+}
+.reserve_wrapper {
+    position: relative;
+    width: 475px;
+    height: 452px;
+    padding: 40px 32px;
+    border-radius: 8px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+}
