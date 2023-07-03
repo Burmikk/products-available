@@ -6,6 +6,12 @@
     justify-content: center;
     align-items: center;
 }
+.status_message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .logo {
     margin-bottom: 54px;
 }
@@ -44,4 +50,8 @@
         background-color: #ffab37;
         color: #fff;
     }
+}
+
+.icon {
+    margin-bottom: 20px;
 }
