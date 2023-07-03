@@ -1,23 +1,22 @@
 import { Link } from "react-router-dom";
 import scss from "./Door.module.scss";
 import { useDispatch } from "react-redux";
-import { showReserv } from "redux/doors/doors-slice";
+import { showReserve } from "redux/doors/doors-slice";
 import { setFormValue } from "redux/doors/doors-slice";
 
 const Door = ({ door }) => {
     const dispatch = useDispatch();
-
+    const name = `${door.collection.name} ${door.door_model.name}`;
     const cardData = {
         image: door.door_model.outside_image,
-        collection: door.collection.name,
-        model: door.door_model.name,
+        name,
         id: door.id,
         price: door.door_model.retail_price,
     };
 
     const handleShowForm = () => {
         dispatch(setFormValue(cardData));
-        dispatch(showReserv(true));
+        dispatch(showReserve(true));
     };
 
     const formattedPrice = cardData.price.toLocaleString();
@@ -27,9 +26,7 @@ const Door = ({ door }) => {
             <li className={scss.card}>
                 <Link to={`/${door.id}`}>
                     <img className={scss.img} src={cardData.image} alt="door" />
-                    <h3 className={scss.title}>
-                        {cardData.collection} {cardData.model}
-                    </h3>
+                    <h3 className={scss.title}>{name}</h3>
                 </Link>
                 <p className={scss.size}>
                     850 х 2030 /

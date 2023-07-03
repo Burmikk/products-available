@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDoorCard } from "redux/doors/doors-operations";
 import { selectDoorCard, selectShowForm } from "redux/doors/doors-selectors";
-import { showReserv } from "redux/doors/doors-slice";
+import { showReserve, setFormValue } from "redux/doors/doors-slice";
 import ReserveForm from "shared/ReserveForm/ReserveForm";
 
 const DoorCard = () => {
@@ -25,7 +25,14 @@ const DoorCard = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(showReserv(!isFormShow));
+        const cardData = {
+            image: card.door_model.outside_image,
+            name: card.description.name,
+            id: card.id,
+            price: card.door_model.retail_price,
+        };
+        dispatch(setFormValue(cardData));
+        dispatch(showReserve(!isFormShow));
     };
     if (card) {
         const formattedPrice = card.door_model.retail_price.toLocaleString();

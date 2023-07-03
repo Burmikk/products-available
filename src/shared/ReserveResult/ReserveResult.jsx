@@ -1,23 +1,30 @@
-import scss from "./ReservResult.module.scss";
-import reservSuccess from "../../assets/reserv_success.svg";
-import { Link } from "react-router-dom";
+import scss from "./ReserveResult.module.scss";
+import reserveSuccess from "../../assets/reserve_success.svg";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setReservMessage, showReserv } from "redux/doors/doors-slice";
+import { setReserveMessage, showReserve } from "redux/doors/doors-slice";
 import { MdOutlineReportGmailerrorred } from "react-icons/md";
-import { selectReservMessage } from "redux/doors/doors-selectors";
-const ReservResult = () => {
+import { selectReserveMessage } from "redux/doors/doors-selectors";
+import { fetchAllDoors } from "redux/doors/doors-operations";
+
+const ReserveResult = () => {
     const dispatch = useDispatch();
-    const { message } = useSelector(selectReservMessage);
+    const { message } = useSelector(selectReserveMessage);
+
+    const location = useLocation();
     const resetMessage = () => {
-        dispatch(setReservMessage(""));
-        dispatch(showReserv(false));
+        dispatch(setReserveMessage(""));
+        dispatch(showReserve(false));
+        if (location.pathname === "/") {
+            dispatch(fetchAllDoors());
+        }
     };
 
     if (message === "Бронирование выполнено успешно.") {
         return (
             <div className={scss.status}>
                 <div className={scss.status_message}>
-                    <img className={scss.logo} src={reservSuccess} alt="Успіх" />
+                    <img className={scss.logo} src={reserveSuccess} alt="Успіх" />
                     <h3 className={scss.title}>Заброньовано!</h3>
                     <p className={scss.text}>Бронювання буде активне впродовж наступних 48 годин</p>
                 </div>
@@ -40,4 +47,4 @@ const ReservResult = () => {
         );
     }
 };
-export default ReservResult;
+export default ReserveResult;

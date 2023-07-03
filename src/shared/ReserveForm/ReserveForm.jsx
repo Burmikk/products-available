@@ -1,12 +1,12 @@
 import Modal from "shared/Modal/Modal";
 import FormInfo from "./FormInfo/FormInfo";
-import ReservResult from "shared/ReservResult/ReservResult";
+import ReserveResult from "shared/ReserveResult/ReserveResult";
 import { useSelector } from "react-redux";
-import { selectReservMessage } from "redux/doors/doors-selectors";
+import { selectReserveMessage } from "redux/doors/doors-selectors";
 
 const ReserveForm = ({ isSelect }) => {
-    const reservStatus = useSelector(selectReservMessage);
-    return <Modal>{!reservStatus ? <FormInfo isSelect={isSelect} /> : <ReservResult />}</Modal>;
+    const reserveStatus = useSelector(selectReserveMessage);
+    return <Modal>{!reserveStatus ? <FormInfo isSelect={isSelect} /> : <ReserveResult />}</Modal>;
 };
 
 export default ReserveForm;

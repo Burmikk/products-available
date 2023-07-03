@@ -1,7 +1,7 @@
 import scss from "./FormInfo.module.scss";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showReserv } from "redux/doors/doors-slice";
+import { showReserve } from "redux/doors/doors-slice";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { selectFormValue } from "redux/doors/doors-selectors";
 import { fetchReservation } from "redux/doors/doors-operations";
@@ -12,7 +12,7 @@ const FormInfo = ({ isSelect }) => {
     const dispatch = useDispatch();
     const formValue = useSelector(selectFormValue);
     const handleClose = () => {
-        dispatch(showReserv(false));
+        dispatch(showReserve(false));
     };
 
     const handleInputChange = (e) => {
@@ -33,6 +33,7 @@ const FormInfo = ({ isSelect }) => {
         };
         dispatch(fetchReservation(value));
     };
+
     const formattedPrice = formValue.price.toLocaleString();
 
     return (
@@ -46,7 +47,7 @@ const FormInfo = ({ isSelect }) => {
                 <div className={scss.description}>
                     <img className={scss.img} src={formValue.image} alt="двері" />
                     <div className={scss.description_box}>
-                        <h2 className={scss.description_title}>{`${formValue.collection} ${formValue.model}`}</h2>
+                        <h2 className={scss.description_title}>{formValue.name}</h2>
                         <select value={select} className={scss.select} onChange={handleSelect}>
                             {select === "" && <option className={scss.select_text}>Виберіть розмір</option>}
                             <option value="right_8" className={scss.select_text}>

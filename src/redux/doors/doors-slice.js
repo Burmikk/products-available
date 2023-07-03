@@ -8,7 +8,7 @@ const initialState = {
     isLoading: false,
     doorCard: null,
     showForm: false,
-    reservMessage: "",
+    reserveMessage: "",
     formValue: null,
 };
 
@@ -58,11 +58,11 @@ const doorsSlice = createSlice({
             .addCase(fetchReservation.pending, (state) => {
                 state.error = null;
                 // state.isLoading = true;
-                state.reservMessage = "";
+                state.reserveMessage = "";
             })
             .addCase(fetchReservation.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
-                state.reservMessage = payload;
+                state.reserveMessage = payload;
             })
             .addCase(fetchReservation.rejected, (state, { payload }) => {
                 state.isLoading = false;
@@ -70,11 +70,11 @@ const doorsSlice = createSlice({
             });
     },
     reducers: {
-        showReserv: (state, { payload }) => {
+        showReserve: (state, { payload }) => {
             state.showForm = payload;
         },
-        setReservMessage: (state, { payload }) => {
-            state.reservMessage = payload;
+        setReserveMessage: (state, { payload }) => {
+            state.reserveMessage = payload;
         },
         setFormValue: (state, { payload }) => {
             state.formValue = payload;
@@ -82,5 +82,5 @@ const doorsSlice = createSlice({
     },
 });
 
-export const { showReserv, setReservMessage, setFormValue } = doorsSlice.actions;
+export const { showReserve, setReserveMessage, setFormValue } = doorsSlice.actions;
 export default doorsSlice.reducer;
