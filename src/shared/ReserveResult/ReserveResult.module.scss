@@ -42,13 +42,10 @@
     color: #fff;
     cursor: pointer;
     &:hover {
-        background-color: #fff;
-        border: 1px solid $accent_color;
-        color: $text_color;
+        background-color: $hover_accent_color;
     }
     &:active {
-        background-color: #ffab37;
-        color: #fff;
+        background-color: $active_accent_color;
     }
 }
 
