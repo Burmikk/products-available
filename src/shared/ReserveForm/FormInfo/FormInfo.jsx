@@ -8,7 +8,7 @@ import { fetchReservation } from "redux/doors/doors-operations";
 
 const FormInfo = ({ isSelect }) => {
     const [select, setSelect] = useState(isSelect);
-    // const [name, setName] = useState("");
+    const [name, setName] = useState("");
     const dispatch = useDispatch();
     const formValue = useSelector(selectFormValue);
     const handleClose = () => {
@@ -16,8 +16,8 @@ const FormInfo = ({ isSelect }) => {
     };
 
     const handleInputChange = (e) => {
-        // const { value } = e.target;
-        // setName(value);
+        const { value } = e.target;
+        setName(value);
     };
 
     const handleSelect = (e) => {
@@ -70,7 +70,9 @@ const FormInfo = ({ isSelect }) => {
                     <button type="button" className={`${scss.btn} ${scss.cancel}`} onClick={handleClose}>
                         Відмінити
                     </button>
-                    <button className={scss.btn}>Бронювати</button>
+                    <button disabled={!name || !select} className={scss.btn}>
+                        Бронювати
+                    </button>
                 </div>
             </form>
         </div>

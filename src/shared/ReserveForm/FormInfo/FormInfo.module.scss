@@ -82,11 +82,10 @@
     width: 200px;
     height: 40px;
 
-    background-color: transparent;
-    color: $accent_color;
+    background-color: $accent_color;
+    color: #fff;
     border-style: none;
     border-radius: 4px;
-    border: 1px solid $accent_color;
 
     font-size: 16px;
     font-family: Open Sans;
@@ -100,23 +99,28 @@
         margin-right: 11px;
     }
     &:hover {
-        background-color: $accent_color;
-        color: #fff;
+        background-color: $hover_accent_color;
     }
     &:active {
-        background-color: $second_accent_color;
-        color: #fff;
+        background-color: $active_accent_color;
+    }
+    &:disabled {
+        border: 1px solid #5e5b60;
+        background-color: transparent;
+        color: #5e5b60;
+        cursor: auto;
     }
 }
 .cancel {
-    border-color: #5e5b60;
-    color: #5e5b60;
+    background-color: transparent;
+    border: 1px solid $accent_color;
+    color: $accent_color;
     &:hover {
-        background-color: #eeeeef;
-        color: #5e5b60;
+        background-color: #ffefd9;
+        color: $accent_color;
     }
     &:active {
-        background-color: rgba(94, 91, 96, 0.4);
+        background-color: $accent_color;
         color: #fff;
     }
 }

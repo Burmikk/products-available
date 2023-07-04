@@ -68,7 +68,7 @@ const DoorCard = () => {
                                             </option>
                                             <option value="left_9" className={scss.select_text}>
                                                 950 х 2030 / ліва
-                                            </option>{" "}
+                                            </option>
                                         </select>
                                     </div>
                                     <button className={scss.btn}>Забронювати</button>
@@ -78,36 +78,36 @@ const DoorCard = () => {
                                 <h3 className={scss.details_title}>Характеристики</h3>
                                 <ul className={scss.details_list}>
                                     <li className={scss.details_item}>
-                                        <p className={scss.details_text}>Нижній замок</p>
+                                        <p className={scss.details_text}>Зовнішня накладка</p>
+                                        <p className={scss.details_text}>{card.description.exterior_look}</p>
+                                    </li>
+                                    <li className={scss.details_item}>
+                                        <p className={scss.details_text}>Внутрішня накладка</p>
+                                        <p className={scss.details_text}>{card.description.interior_look}</p>
+                                    </li>
+                                    <li className={scss.details_item}>
+                                        <p className={scss.details_text}>Основний замок</p>
                                         <p className={scss.details_text}>{card.description.main_lock}</p>
                                     </li>
                                     <li className={scss.details_item}>
-                                        <p className={scss.details_text}>Нижній замок</p>
+                                        <p className={scss.details_text}>Додатковий замок</p>
                                         <p className={scss.details_text}>{card.description.main_lock}</p>
                                     </li>
                                     <li className={scss.details_item}>
-                                        <p className={scss.details_text}>Нижній замок</p>
-                                        <p className={scss.details_text}>{card.description.main_lock}</p>
+                                        <p className={scss.details_text}>Циліндр</p>
+                                        <p className={scss.details_text}>{card.description.cylinder}</p>
                                     </li>
                                     <li className={scss.details_item}>
-                                        <p className={scss.details_text}>Нижній замок</p>
-                                        <p className={scss.details_text}>{card.description.main_lock}</p>
+                                        <p className={scss.details_text}>Вічко</p>
+                                        <p className={scss.details_text}>{card.description.peephole}</p>
                                     </li>
                                     <li className={scss.details_item}>
-                                        <p className={scss.details_text}>Нижній замок</p>
-                                        <p className={scss.details_text}>{card.description.main_lock}</p>
+                                        <p className={scss.details_text}>Зашиті торці</p>
+                                        <p className={scss.details_text}>{card.description.end_decoration}</p>
                                     </li>
                                     <li className={scss.details_item}>
-                                        <p className={scss.details_text}>Нижній замок</p>
-                                        <p className={scss.details_text}>{card.description.main_lock}</p>
-                                    </li>
-                                    <li className={scss.details_item}>
-                                        <p className={scss.details_text}>Нижній замок</p>
-                                        <p className={scss.details_text}>{card.description.main_lock}</p>
-                                    </li>
-                                    <li className={scss.details_item}>
-                                        <p className={scss.details_text}>Нижній замок</p>
-                                        <p className={scss.details_text}>{card.description.main_lock}</p>
+                                        <p className={scss.details_text}>Нержавіючий поріг</p>
+                                        <p className={scss.details_text}>{card.description.stainless_threshold}</p>
                                     </li>
                                 </ul>
                             </div>

@@ -71,12 +71,11 @@
     cursor: pointer;
 
     &:hover {
-        background-color: #fff;
-        border: 1px solid $accent_color;
-        color: $text_color;
+        background-color: $hover_accent_color;
+        color: #fff;
     }
     &:active {
-        background-color: $second_accent_color;
+        background-color: $active_accent_color;
         color: #fff;
     }
 }
