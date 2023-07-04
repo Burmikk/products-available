@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDoorCard } from "redux/doors/doors-operations";
 import { selectDoorCard, selectShowForm } from "redux/doors/doors-selectors";
-import { showReserve, setFormValue } from "redux/doors/doors-slice";
+import { showReserve, setFormValue, clearDoorCard } from "redux/doors/doors-slice";
 import ReserveForm from "shared/ReserveForm/ReserveForm";
 
 const DoorCard = () => {
@@ -18,6 +18,9 @@ const DoorCard = () => {
 
     useEffect(() => {
         dispatch(fetchDoorCard(params.doorId));
+        return () => {
+            dispatch(clearDoorCard());
+        };
     }, [dispatch, params.doorId]);
 
     const handleSelect = (e) => {

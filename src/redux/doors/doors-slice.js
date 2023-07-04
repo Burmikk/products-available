@@ -79,8 +79,11 @@ const doorsSlice = createSlice({
         setFormValue: (state, { payload }) => {
             state.formValue = payload;
         },
+        clearDoorCard: (state) => {
+            state.doorCard = null;
+        },
     },
 });
 
-export const { showReserve, setReserveMessage, setFormValue } = doorsSlice.actions;
+export const { showReserve, setReserveMessage, setFormValue, clearDoorCard } = doorsSlice.actions;
 export default doorsSlice.reducer;
