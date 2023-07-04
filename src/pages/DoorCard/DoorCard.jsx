@@ -8,19 +8,25 @@ import { showReserve, setFormValue } from "redux/doors/doors-slice";
 import ReserveForm from "shared/ReserveForm/ReserveForm";
 
 const DoorCard = () => {
-    const [select, setSelect] = useState("");
     const card = useSelector(selectDoorCard);
-    const isFormShow = useSelector(selectShowForm);
     const params = useParams();
     const dispatch = useDispatch();
 
+    const [select, setSelect] = useState("");
+    const [bigImg, setBigImg] = useState(null);
+    const isFormShow = useSelector(selectShowForm);
+
     useEffect(() => {
         dispatch(fetchDoorCard(params.doorId));
-    }, [params.doorId, dispatch]);
+    }, [dispatch, params.doorId]);
 
     const handleSelect = (e) => {
         const { value } = e.target;
         setSelect(value);
+    };
+
+    const handleClickImg = (src) => {
+        setBigImg(src);
     };
 
     const handleSubmit = (e) => {
@@ -44,8 +50,33 @@ const DoorCard = () => {
                         На головну
                     </Link>
                     <div className={scss.card_wrapper}>
+                        {card.door_model.inside_image && (
+                            <div className={scss.smallImg_wrapper}>
+                                <div
+                                    className={scss.smallImg_box}
+                                    onClick={() => handleClickImg(card.door_model.outside_image)}
+                                >
+                                    <img
+                                        className={scss.smallImg}
+                                        src={card.door_model.outside_image}
+                                        alt="маленькі двері"
+                                    />
+                                </div>
+                                <div
+                                    className={scss.smallImg_box}
+                                    onClick={() => handleClickImg(card.door_model.inside_image)}
+                                >
+                                    <img
+                                        className={scss.smallImg}
+                                        src={card.door_model.inside_image}
+                                        alt="маленькі двері"
+                                    />
+                                </div>
+                            </div>
+                        )}
+
                         <div className={scss.img_box}>
-                            <img className={scss.img} src={card.door_model.outside_image} alt="двері" />
+                            <img className={scss.img} src={bigImg || card.door_model.outside_image} alt="двері" />
                         </div>
                         <div className={scss.card_info}>
                             <div>

@@ -12,7 +12,26 @@
 }
 .card_wrapper {
     display: flex;
-    gap: 80px;
+}
+.smallImg_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.smallImg_box {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 38px;
+    border-radius: 8px;
+    border: 1px solid #bebebe;
+    cursor: pointer;
+}
+.smallImg {
+    width: 50px;
+    height: 100px;
 }
 .img_box {
     width: 445px;
@@ -20,6 +39,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 80px;
     border-radius: 8px;
     border: 1px solid #bebebe;
 }
