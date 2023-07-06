@@ -10,9 +10,6 @@
     padding: 20px;
     color: $icon_color;
     cursor: pointer;
-    @media screen and (min-width: $tablet) {
-        position: absolute;
-    }
 
     @media screen and (min-width: $leptop) {
         display: none;
@@ -31,18 +28,19 @@
     background-color: #fff;
     pointer-events: none;
     transition: opacity 1s ease, transform 0.5s ease;
-    overflow: scroll;
+    overflow: auto;
 
     @media screen and (min-width: $tablet) {
         min-width: 350px;
     }
     @media screen and (min-width: $leptop) {
-        height: inherit;
+        height: calc(100vh - 100px);
+
         position: relative;
         pointer-events: auto;
         opacity: 1;
         transform: translate(0);
-        overflow: visible;
+        overflow: auto;
     }
 }
 

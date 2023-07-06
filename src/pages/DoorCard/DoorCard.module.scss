@@ -14,6 +14,7 @@
     display: flex;
 }
 .smallImg_wrapper {
+    order: 1;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -34,6 +35,7 @@
     height: 100px;
 }
 .img_box {
+    order: 2;
     width: 445px;
     height: 590px;
     display: flex;
@@ -42,6 +44,12 @@
     margin-right: 80px;
     border-radius: 8px;
     border: 1px solid #bebebe;
+}
+.form_container {
+    order: 3;
+}
+.options_container {
+    order: 4;
 }
 .img {
     width: 265px;

@@ -82,7 +82,7 @@ const DoorCard = () => {
                             <img className={scss.img} src={bigImg || card.door_model.outside_image} alt="двері" />
                         </div>
                         <div className={scss.card_info}>
-                            <div>
+                            <div className={scss.form_container}>
                                 <h2 className={scss.title}>{card.description.name}</h2>
                                 <p className={scss.price}>{`${formattedPrice} грн`}</p>
                                 <form className={scss.form} onSubmit={handleSubmit}>
@@ -108,7 +108,7 @@ const DoorCard = () => {
                                     <button className={scss.btn}>Забронювати</button>
                                 </form>
                             </div>
-                            <div>
+                            <div className={scss.options_container}>
                                 <h3 className={scss.details_title}>Характеристики</h3>
                                 <ul className={scss.details_list}>
                                     <li className={scss.details_item}>

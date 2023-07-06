@@ -7,6 +7,8 @@ import { selectShowForm } from "redux/doors/doors-selectors";
 import ReserveForm from "shared/ReserveForm/ReserveForm";
 import { useState } from "react";
 import { fetchLoadMoreDoors } from "redux/doors/doors-operations";
+import Modal from "shared/Modal/Modal";
+import { selectShowFilter } from "redux/filter/filter-selectors";
 
 const DoorsList = () => {
     const [page, setPage] = useState(1);
@@ -14,6 +16,7 @@ const DoorsList = () => {
     const totalDoors = useSelector(selectTotalDoors);
     const isLoading = useSelector(selectIsLoading);
     const isFormShow = useSelector(selectShowForm);
+    const isFilterSown = useSelector(selectShowFilter);
     const dispatch = useDispatch();
 
     const doorsList = doors.map((item) => <Door door={item} key={item.id} />);
@@ -23,27 +26,7 @@ const DoorsList = () => {
         dispatch(fetchLoadMoreDoors(page));
     };
 
-    if (isLoading) {
-        return (
-            <div className={scss.door_list}>
-                <div className={scss.title_wrapper}>
-                    <h2 className={scss.title}>Залишок дверей на складі</h2>
-                </div>
-                <div className={scss.spiner_wrapper}>
-                    <MagnifyingGlass
-                        visible={true}
-                        height="100"
-                        width="100"
-                        ariaLabel="MagnifyingGlass-loading"
-                        wrapperStyle={{}}
-                        wrapperClass="MagnifyingGlass-wrapper"
-                        glassColor="#fff"
-                        color="#ff9400"
-                    />
-                </div>
-            </div>
-        );
-    } else if (doors.length === 0) {
+    if (!isLoading && doors.length === 0) {
         return (
             <div className={scss.door_list}>
                 <div className={scss.title_wrapper}>
@@ -56,11 +39,24 @@ const DoorsList = () => {
         );
     } else {
         return (
-            <div className={scss.door_list}>
+            <div style={isFilterSown ? { overflow: "hidden", pointerEvents: "none" } : {}} className={scss.door_list}>
                 <div className={scss.title_wrapper}>
                     <h2 className={scss.title}>Залишок дверей на складі</h2>
                 </div>
-
+                {isLoading && (
+                    <Modal>
+                        <MagnifyingGlass
+                            visible={true}
+                            height="100"
+                            width="100"
+                            ariaLabel="MagnifyingGlass-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="MagnifyingGlass-wrapper"
+                            glassColor="#fff"
+                            color="#ff9400"
+                        />
+                    </Modal>
+                )}
                 <ul className={scss.list}>{doorsList} </ul>
                 {isFormShow && <ReserveForm isSelect="" />}
                 {doors.length < totalDoors && (

@@ -44,6 +44,7 @@ const Filter = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(fetchFilterDoors({ ...inputValue, ...size }));
+        dispatch(showFilter(false));
     };
 
     const addRadioValue = (value) => {

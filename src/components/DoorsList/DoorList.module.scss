@@ -1,12 +1,18 @@
 @import "../../styles/colors";
 @import "../../styles/breakpoints";
 
-.door_list {
-    // width: 1094px;
+.list_container {
     height: inherit;
-    flex-grow: 1;
+}
+.door_list {
+    height: calc(100vh - 80px);
     padding: 35px;
+    overflow: auto;
+    flex-grow: 1;
     background-color: $list_background_color;
+    @media screen and (min-width: $leptop) {
+        height: calc(100vh - 100px);
+    }
 }
 .title_wrapper {
     margin-bottom: 20px;
@@ -34,11 +40,6 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    background-color: $list_background_color;
-}
-.spiner_wrapper {
-    margin-top: 100px;
-    text-align: center;
 }
 
 .not_found {
@@ -57,7 +58,7 @@
     display: block;
     width: 200px;
     height: 48px;
-    margin: 25px auto;
+    margin: 25px auto 0;
     background: $accent_color;
     border-radius: 4px;
     border-style: none;
