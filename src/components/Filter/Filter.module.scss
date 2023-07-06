@@ -2,7 +2,7 @@
 @import "../../styles/colors";
 
 .icon_wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
@@ -17,27 +17,12 @@
         display: none;
     }
 }
-.filter_list {
-    position: absolute;
-    height: calc(100vh - 100px);
-    min-width: 90vw;
-    transform: translate(-100%, 0);
-    transition: opacity 1s ease, transform 0.5s ease;
-    // background-color: red;
-    // overflow: hidden;
-    @media screen and (min-width: $tablet) {
-        min-width: 350px;
-    }
-}
+
 .filter {
-    position: fixed;
-    min-width: 97vw;
+    position: absolute;
+    min-width: 100vw;
     height: calc(100vh - 100px);
-
     padding: 40px;
-
-    padding-top: 80px;
-
     padding-bottom: 20px;
     opacity: 0;
     z-index: 1;
@@ -45,7 +30,7 @@
     background-color: #fff;
     pointer-events: none;
     transition: opacity 1s ease, transform 0.5s ease;
-    overflow: auto;
+    overflow: scroll;
 
     @media screen and (min-width: $tablet) {
         min-width: 350px;
@@ -65,17 +50,7 @@
     pointer-events: auto;
 }
 
-.show_filter .filter {
-    opacity: 1;
-    transform: translate(0);
-    pointer-events: auto;
-}
-
 .btn {
-    position: fixed;
-    top: 20px;
-    left: 40px;
-
     width: 225px;
     height: 48px;
     background: $accent_color;
@@ -86,7 +61,6 @@
     font-size: 16px;
     line-height: 1.4;
     color: #fff;
-    z-index: 3;
     cursor: pointer;
     &:hover {
         background-color: $hover_accent_color;
