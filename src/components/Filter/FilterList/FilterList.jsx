@@ -57,7 +57,7 @@ const FilterList = ({ filterTitle, data, filterName, getRadioValue, getRadioName
         setSelectedValue("delete");
     };
 
-    const filterItem = data.map((item, index, arr) => {
+    const filterItem = data.map((item) => {
         return (
             <li className={scss.filter_item} key={item.id}>
                 <input
@@ -77,18 +77,21 @@ const FilterList = ({ filterTitle, data, filterName, getRadioValue, getRadioName
         );
     });
 
-    const showListStyles = showMore ? `${scss.filter_list} ${scss.show_list}` : scss.filter_list;
-    const minLength = data.length > 4 ? `${scss.filter_wrapper} ${scss.new_styles}` : scss.filter_wrapper;
+    // const minLength = data.length > 4 ? `${scss.filter_wrapper} ${scss.new_styles}` : scss.filter_wrapper;
 
     return (
-        <div className={minLength}>
+        <div className={scss.filter_wrapper}>
             <div className={scss.title_box}>
                 <h2 className={scss.title}>{filterTitle}</h2>
                 <p className={scss.reset} onClick={filterReset}>
                     Скинути
                 </p>
             </div>
-            <ul style={{ height: showMore ? currentHeight : smallHeight }} ref={elementRef} className={showListStyles}>
+            <ul
+                style={{ height: showMore ? currentHeight : smallHeight }}
+                ref={elementRef}
+                className={scss.filter_list}
+            >
                 {filterItem}
             </ul>
             {data.length > 4 && (

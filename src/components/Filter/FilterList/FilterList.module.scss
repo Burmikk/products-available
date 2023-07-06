@@ -2,11 +2,9 @@
 
 .filter_wrapper {
     position: relative;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
-.new_styles {
-    margin-bottom: 50px;
-}
+
 .title_box {
     display: flex;
     align-items: center;
@@ -27,9 +25,6 @@
 .filter_list {
     overflow: hidden;
     transition: all 0.5s ease;
-}
-.show_list {
-    overflow: auto;
 }
 
 .filter_item {
@@ -79,16 +74,9 @@
 }
 
 .showBtn {
-    position: absolute;
-    bottom: -40px;
-    // right: 50%;
-    // transform: translateX(50%);
+    margin-top: 25px;
     font-size: 14px;
     line-height: 1.4;
     color: $accent_color;
     cursor: pointer;
 }
-// .showMore {
-//     position: static;
-//     margin-top: 25px;
-// }
