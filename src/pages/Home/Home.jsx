@@ -1,14 +1,10 @@
 import Filter from "../../components/Filter/Filter";
 import DoorsList from "../../components/DoorsList/DoorsList";
 import { useEffect } from "react";
-import { fetchFilter } from "redux/filter/filter-operations";
-import { fetchAllDoors } from "redux/doors/doors-operations";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectShowFilter } from "redux/filter/filter-selectors";
 
 const Home = () => {
-    const dispatch = useDispatch();
     const show = useSelector(selectShowFilter);
 
     useEffect(() => {
@@ -32,10 +28,6 @@ const Home = () => {
         }
     }, [show]);
 
-    useEffect(() => {
-        dispatch(fetchFilter());
-        dispatch(fetchAllDoors());
-    }, [dispatch]);
     return (
         <>
             <Filter />

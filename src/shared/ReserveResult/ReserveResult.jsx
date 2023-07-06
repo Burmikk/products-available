@@ -12,12 +12,11 @@ const ReserveResult = () => {
     const { message } = useSelector(selectReserveMessage);
 
     const location = useLocation();
+
     const resetMessage = () => {
         dispatch(setReserveMessage(""));
         dispatch(showReserve(false));
-        if (location.pathname === "/") {
-            dispatch(fetchAllDoors());
-        }
+        dispatch(fetchAllDoors());
     };
 
     if (message === "Бронирование выполнено успешно.") {

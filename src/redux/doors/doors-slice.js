@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAllDoors, fetchFilterDoors, fetchDoorCard, fetchReservation } from "./doors-operations";
+import {
+    fetchAllDoors,
+    fetchLoadMoreDoors,
+    fetchFilterDoors,
+    fetchDoorCard,
+    fetchReservation,
+} from "./doors-operations";
 
 const initialState = {
     doors: [],
@@ -27,6 +33,19 @@ const doorsSlice = createSlice({
                 state.totalDoors = payload.count;
             })
             .addCase(fetchAllDoors.rejected, (state, { payload }) => {
+                state.isLoading = false;
+                state.error = payload;
+            })
+            .addCase(fetchLoadMoreDoors.pending, (state) => {
+                state.error = null;
+                state.isLoading = true;
+            })
+            .addCase(fetchLoadMoreDoors.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.doors = [...state.doors, ...payload.results];
+                state.totalDoors = payload.count;
+            })
+            .addCase(fetchLoadMoreDoors.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 state.error = payload;
             })

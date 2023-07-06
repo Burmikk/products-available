@@ -9,6 +9,14 @@ export const fetchAllDoors = createAsyncThunk("doors/fetchAllDoors", async (_, {
         return rejectWithValue(response);
     }
 });
+export const fetchLoadMoreDoors = createAsyncThunk("doors/fetchLoadMoreDoors", async (page, { rejectWithValue }) => {
+    try {
+        const { data } = await getAllDoors(page);
+        return data;
+    } catch ({ response }) {
+        return rejectWithValue(response);
+    }
+});
 
 export const fetchFilterDoors = createAsyncThunk("doors/fetchFilterDoors", async (values, { rejectWithValue }) => {
     try {

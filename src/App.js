@@ -1,14 +1,13 @@
-import scss from "./App.module.scss";
 import NavBar from "./components/NavBar/NavBar";
-
 import MainRouter from "MainRouter";
+import Layout from "components/Layout/Layout";
 
 const App = () => {
     return (
-        <div>
+        <Layout>
             <NavBar />
             <MainRouter />
-        </div>
+        </Layout>
     );
 };
 
