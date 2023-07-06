@@ -35,6 +35,9 @@
     height: calc(100vh - 100px);
 
     padding: 40px;
+
+    padding-top: 80px;
+
     padding-bottom: 20px;
     opacity: 0;
     z-index: 1;
@@ -70,7 +73,7 @@
 
 .btn {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     left: 40px;
 
     width: 225px;
