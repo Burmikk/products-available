@@ -1,17 +1,27 @@
 import Door from "./Door/Door";
 import scss from "./DoorList.module.scss";
 import { MagnifyingGlass } from "react-loader-spinner";
-import { useSelector } from "react-redux";
-import { selectAllDoors, selectIsLoading } from "redux/doors/doors-selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { selectAllDoors, selectIsLoading, selectTotalDoors } from "redux/doors/doors-selectors";
 import { selectShowForm } from "redux/doors/doors-selectors";
 import ReserveForm from "shared/ReserveForm/ReserveForm";
+import { useState } from "react";
+import { fetchLoadMoreDoors } from "redux/doors/doors-operations";
 
 const DoorsList = () => {
+    const [page, setPage] = useState(1);
     const doors = useSelector(selectAllDoors);
+    const totalDoors = useSelector(selectTotalDoors);
     const isLoading = useSelector(selectIsLoading);
     const isFormShow = useSelector(selectShowForm);
+    const dispatch = useDispatch();
 
     const doorsList = doors.map((item) => <Door door={item} key={item.id} />);
+
+    const loadMoreDoors = () => {
+        setPage((prevState) => prevState + 1);
+        dispatch(fetchLoadMoreDoors(page));
+    };
 
     if (isLoading) {
         return (
@@ -53,6 +63,11 @@ const DoorsList = () => {
 
                 <ul className={scss.list}>{doorsList} </ul>
                 {isFormShow && <ReserveForm isSelect="" />}
+                {doors.length < totalDoors && (
+                    <button onClick={loadMoreDoors} className={scss.loadmoreBtn}>
+                        Показати ще
+                    </button>
+                )}
             </div>
         );
     }
