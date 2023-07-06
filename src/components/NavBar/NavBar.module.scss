@@ -1,7 +1,7 @@
 @import "../../styles/breakpoints";
 .header {
     width: 100%;
-    height: 100px;
+    height: 80px;
     background-image: url("../../assets//nav-background.png");
     background-size: cover;
     background-position: center;
@@ -11,12 +11,28 @@
     position: fixed;
     z-index: 2;
     @media screen and (min-width: $tablet) {
+    }
+    @media screen and (min-width: $leptop) {
         position: relative;
+        height: 100px;
     }
 }
 
 .logo {
     display: flex;
     align-items: center;
-    padding: 0 100px;
+    // padding: 0 100px;
+    width: 150px;
+    height: 48px;
+    margin: 0 100px;
+
+    @media screen and (min-width: $leptop) {
+        width: 220px;
+        height: 70px;
+    }
+}
+
+.logo_img {
+    width: inherit;
+    height: inherit;
 }

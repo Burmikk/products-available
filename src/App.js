@@ -5,7 +5,7 @@ import MainRouter from "MainRouter";
 
 const App = () => {
     return (
-        <div className={scss.container}>
+        <div>
             <NavBar />
             <MainRouter />
         </div>

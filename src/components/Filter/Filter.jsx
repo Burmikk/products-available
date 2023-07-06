@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllFilters } from "redux/filter/filter-selectors";
 import { fetchFilterDoors } from "redux/doors/doors-operations";
 import FilterList from "./FilterList/FilterList";
-import { BiMenu } from "react-icons/bi";
+import { IoOptionsOutline } from "react-icons/io5";
+
 import { showFilter } from "redux/filter/filter-slice";
 
 const Filter = () => {
@@ -71,7 +72,7 @@ const Filter = () => {
     return (
         <>
             <div className={scss.icon_wrapper} onClick={toggelShowFilter}>
-                <BiMenu className={scss.icon} size={40} />
+                <IoOptionsOutline className={scss.icon} size={40} />
             </div>
             <form className={filterStyle} onSubmit={handleSubmit}>
                 {filterList}

@@ -4,8 +4,8 @@
 .main {
     display: flex;
     min-height: 100vh;
-    padding-top: 100px;
-    @media screen and (min-width: $tablet) {
+    padding-top: 80px;
+    @media screen and (min-width: $leptop) {
         padding-top: 0;
     }
 }

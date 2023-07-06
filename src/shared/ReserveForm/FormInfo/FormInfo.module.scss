@@ -9,7 +9,7 @@
     cursor: pointer;
 }
 .icon_close {
-    color: #5e5b60;
+    color: $icon_color;
     &:hover {
         color: $accent_color;
     }
@@ -105,9 +105,9 @@
         background-color: $active_accent_color;
     }
     &:disabled {
-        border: 1px solid #5e5b60;
+        border: 1px solid $icon_color;
         background-color: transparent;
-        color: #5e5b60;
+        color: $icon_color;
         cursor: auto;
     }
 }
