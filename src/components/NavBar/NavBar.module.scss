@@ -1,3 +1,4 @@
+@import "../../styles/breakpoints";
 .header {
     width: 100%;
     height: 100px;
@@ -9,7 +10,7 @@
     align-items: center;
     position: fixed;
     z-index: 2;
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: $tablet) {
         position: relative;
     }
 }
@@ -17,17 +18,5 @@
 .logo {
     display: flex;
     align-items: center;
-
-    @media screen and (min-width: 1200px) {
-        padding: 0 50px;
-    }
-}
-.icon_wrapper {
-    padding: 25px;
-    margin-right: 37px;
-    cursor: pointer;
-
-    @media screen and (min-width: 1200px) {
-        display: none;
-    }
+    padding: 0 100px;
 }

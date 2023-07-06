@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllFilters } from "redux/filter/filter-selectors";
 import { fetchFilterDoors } from "redux/doors/doors-operations";
 import FilterList from "./FilterList/FilterList";
+import { BiMenu } from "react-icons/bi";
+import { showFilter } from "redux/filter/filter-slice";
 
 const Filter = () => {
     const [radioValue, setRadioValue] = useState();
@@ -17,7 +19,7 @@ const Filter = () => {
     //Берет из стейта все существующие фильтра для отрисовки
     const allFilters = useSelector(selectAllFilters);
     //Берет из стейта состояние фильтра (показывать или скрыть)
-    const showFilter = useSelector(selectShowFilter);
+    const isFilterShown = useSelector(selectShowFilter);
 
     const dispatch = useDispatch();
     //Формирует объект для HTTP запроса
@@ -51,7 +53,11 @@ const Filter = () => {
         setRadioName(value);
     };
 
-    const filterStyle = showFilter ? `${scss.filter} ${scss.show_filter}` : ` ${scss.filter}`;
+    const toggelShowFilter = () => {
+        dispatch(showFilter(!isFilterShown));
+    };
+
+    const filterStyle = isFilterShown ? `${scss.filter} ${scss.show_filter}` : ` ${scss.filter}`;
     const filterList = allFilters.map((item, index) => (
         <FilterList
             key={index}
@@ -63,12 +69,17 @@ const Filter = () => {
         />
     ));
     return (
-        <form className={filterStyle} onSubmit={handleSubmit}>
-            {filterList}
-            <button type="submit" className={scss.btn}>
-                Показати
-            </button>
-        </form>
+        <>
+            <div className={scss.icon_wrapper} onClick={toggelShowFilter}>
+                <BiMenu className={scss.icon} size={40} />
+            </div>
+            <form className={filterStyle} onSubmit={handleSubmit}>
+                {filterList}
+                <button type="submit" className={scss.btn}>
+                    Показати
+                </button>
+            </form>
+        </>
     );
 };
 export default Filter;
