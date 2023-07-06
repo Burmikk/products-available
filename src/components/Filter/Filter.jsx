@@ -57,7 +57,7 @@ const Filter = () => {
         dispatch(showFilter(!isFilterShown));
     };
 
-    const filterStyle = isFilterShown ? `${scss.filter} ${scss.show_filter}` : ` ${scss.filter}`;
+    const filterStyle = isFilterShown ? `${scss.filter_list} ${scss.show_filter}` : ` ${scss.filter_list}`;
     const filterList = allFilters.map((item, index) => (
         <FilterList
             key={index}
@@ -73,12 +73,14 @@ const Filter = () => {
             <div className={scss.icon_wrapper} onClick={toggelShowFilter}>
                 <BiMenu className={scss.icon} size={40} />
             </div>
-            <form className={filterStyle} onSubmit={handleSubmit}>
-                {filterList}
+            <div className={filterStyle}>
+                <form className={scss.filter} onSubmit={handleSubmit}>
+                    {filterList}
+                </form>
                 <button type="submit" className={scss.btn}>
                     Показати
                 </button>
-            </form>
+            </div>
         </>
     );
 };
