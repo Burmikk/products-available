@@ -9,6 +9,7 @@ import { fetchReservation } from "redux/doors/doors-operations";
 const FormInfo = ({ isSelect }) => {
     const [select, setSelect] = useState(isSelect);
     const [name, setName] = useState("");
+    const [selectText, setSelectText] = useState();
     const dispatch = useDispatch();
     const formValue = useSelector(selectFormValue);
 
@@ -16,7 +17,7 @@ const FormInfo = ({ isSelect }) => {
         return () => {
             dispatch(clearFormValue());
         };
-    }, []);
+    }, [dispatch]);
 
     const handleClose = () => {
         dispatch(showReserve(false));
@@ -29,14 +30,20 @@ const FormInfo = ({ isSelect }) => {
 
     const handleSelect = (e) => {
         const { value } = e.target;
+        const optionText = e.target.options[e.target.selectedIndex].text;
+        setSelectText(optionText);
         setSelect(value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const value = {
             door_id: formValue.id,
             position: select,
+            name,
+            door_name: formValue.name,
+            size: selectText,
         };
         dispatch(fetchReservation(value));
     };
