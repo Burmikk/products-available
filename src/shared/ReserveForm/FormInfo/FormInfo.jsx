@@ -1,7 +1,7 @@
 import scss from "./FormInfo.module.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showReserve, clearFormValue } from "redux/doors/doors-slice";
+import { showReserve } from "redux/doors/doors-slice";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { selectFormValue } from "redux/doors/doors-selectors";
 import { fetchReservation } from "redux/doors/doors-operations";

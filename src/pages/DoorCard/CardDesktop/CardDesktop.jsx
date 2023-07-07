@@ -1,4 +1,24 @@
-const CardDesktop = () => {
+import scss from "./CardDesktop.module.scss";
+import ReserveForm from "shared/ReserveForm/ReserveForm";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectDoorCard, selectFormValue, selectShowForm } from "redux/doors/doors-selectors";
+
+const CardDesktop = ({ select, onChange, handleClickImg, bigImg, handleSubmit }) => {
+    const card = useSelector(selectDoorCard);
+    const formValue = useSelector(selectFormValue);
+    const isFormShow = useSelector(selectShowForm);
+
+    const formattedPrice = card.door_model.retail_price.toLocaleString();
+
+    const options = formValue.sizes
+        .filter((item) => item.quantity > 0)
+        .map((item) => (
+            <option value={item.name} className={scss.select_text}>
+                {item.text}
+            </option>
+        ));
+
     return (
         <>
             {isFormShow && <ReserveForm isSelect={select} />}
@@ -41,20 +61,9 @@ const CardDesktop = () => {
                             <p className={scss.price}>{`${formattedPrice} грн`}</p>
                             <form className={scss.form} onSubmit={handleSubmit}>
                                 <div className={scss.select_wrapper}>
-                                    <select className={scss.select} onChange={handleSelect}>
+                                    <select className={scss.select} onChange={onChange}>
                                         {select === "" && <option className={scss.select_text}>Виберіть розмір</option>}
-                                        <option value="right_8" className={scss.select_text}>
-                                            850 х 2030 / права
-                                        </option>
-                                        <option value="left_8" className={scss.select_text}>
-                                            850 х 2030 / ліва
-                                        </option>
-                                        <option value="right_9" className={scss.select_text}>
-                                            950 х 2030 / права
-                                        </option>
-                                        <option value="left_9" className={scss.select_text}>
-                                            950 х 2030 / ліва
-                                        </option>
+                                        {options}
                                     </select>
                                 </div>
                                 <button className={scss.btn}>Забронювати</button>
@@ -103,4 +112,5 @@ const CardDesktop = () => {
         </>
     );
 };
+
 export default CardDesktop;

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectFormValue } from "redux/doors/doors-selectors";
 import scss from "./Select.module.scss";
-const Select = ({ select, onChange }) => {
+const Select = ({ select = "", onChange }) => {
     const formValue = useSelector(selectFormValue);
 
     const options = formValue.sizes
