@@ -23,6 +23,40 @@ const DoorCard = () => {
         };
     }, [dispatch, params.doorId]);
 
+    useEffect(() => {
+        if (card) {
+            const cardData = {
+                image: card.door_model.outside_image,
+                name: card.description.name,
+                id: card.id,
+                price: card.door_model.retail_price,
+                sizes: [
+                    {
+                        name: "left_8",
+                        quantity: card.left_8,
+                        text: "850 х 2030 / ліва",
+                    },
+                    {
+                        name: "right_8",
+                        quantity: card.right_8,
+                        text: "850 х 2030 / права",
+                    },
+                    {
+                        name: "left_9",
+                        quantity: card.left_9,
+                        text: "950 х 2030 / ліва",
+                    },
+                    {
+                        name: "right_9",
+                        quantity: card.right_9,
+                        text: "950 х 2030 / права",
+                    },
+                ],
+            };
+            dispatch(setFormValue(cardData));
+        }
+    }, [dispatch, card]);
+
     const handleSelect = (e) => {
         const { value } = e.target;
         setSelect(value);
@@ -34,13 +68,35 @@ const DoorCard = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const cardData = {
-            image: card.door_model.outside_image,
-            name: card.description.name,
-            id: card.id,
-            price: card.door_model.retail_price,
-        };
-        dispatch(setFormValue(cardData));
+        // const cardData = {
+        //     image: card.door_model.outside_image,
+        //     name: card.description.name,
+        //     id: card.id,
+        //     price: card.door_model.retail_price,
+        //     sizes: [
+        //         {
+        //             name: "left_8",
+        //             quantity: card.left_8,
+        //             text: "850 х 2030 / ліва",
+        //         },
+        //         {
+        //             name: "right_8",
+        //             quantity: card.right_8,
+        //             text: "850 х 2030 / права",
+        //         },
+        //         {
+        //             name: "left_9",
+        //             quantity: card.left_9,
+        //             text: "950 х 2030 / ліва",
+        //         },
+        //         {
+        //             name: "right_9",
+        //             quantity: card.right_9,
+        //             text: "950 х 2030 / права",
+        //         },
+        //     ],
+        // };
+        // dispatch(setFormValue(cardData));
         dispatch(showReserve(!isFormShow));
     };
     if (card) {
