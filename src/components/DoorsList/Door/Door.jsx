@@ -12,6 +12,28 @@ const Door = ({ door }) => {
         name,
         id: door.id,
         price: door.door_model.retail_price,
+        sizes: [
+            {
+                name: "left_8",
+                quantity: door.left_8,
+                text: "850 х 2030 / ліва",
+            },
+            {
+                name: "right_8",
+                quantity: door.right_8,
+                text: "850 х 2030 / права",
+            },
+            {
+                name: "left_9",
+                quantity: door.left_9,
+                text: "950 х 2030 / ліва",
+            },
+            {
+                name: "right_9",
+                quantity: door.right_9,
+                text: "950 х 2030 / права",
+            },
+        ],
     };
 
     const handleShowForm = () => {

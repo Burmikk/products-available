@@ -5,6 +5,7 @@ import { showReserve, clearFormValue } from "redux/doors/doors-slice";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { selectFormValue } from "redux/doors/doors-selectors";
 import { fetchReservation } from "redux/doors/doors-operations";
+import Select from "shared/Select/Select";
 
 const FormInfo = ({ isSelect }) => {
     const [select, setSelect] = useState(isSelect);
@@ -12,12 +13,6 @@ const FormInfo = ({ isSelect }) => {
     const [selectText, setSelectText] = useState();
     const dispatch = useDispatch();
     const formValue = useSelector(selectFormValue);
-
-    useEffect(() => {
-        return () => {
-            dispatch(clearFormValue());
-        };
-    }, [dispatch]);
 
     const handleClose = () => {
         dispatch(showReserve(false));
@@ -62,7 +57,7 @@ const FormInfo = ({ isSelect }) => {
                     <img className={scss.img} src={formValue.image} alt="двері" />
                     <div className={scss.description_box}>
                         <h2 className={scss.description_title}>{formValue.name}</h2>
-                        <select value={select} className={scss.select} onChange={handleSelect}>
+                        {/* <select value={select} className={scss.select} onChange={handleSelect}>
                             {select === "" && <option className={scss.select_text}>Виберіть розмір</option>}
                             <option value="right_8" className={scss.select_text}>
                                 850 х 2030 / права
@@ -76,7 +71,8 @@ const FormInfo = ({ isSelect }) => {
                             <option value="left_9" className={scss.select_text}>
                                 950 х 2030 / ліва
                             </option>
-                        </select>
+                        </select> */}
+                        <Select select={select} onChange={handleSelect} />
                         <p className={scss.price}>{`${formattedPrice} грн`}</p>
                     </div>
                 </div>
