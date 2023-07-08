@@ -6,6 +6,7 @@ import { fetchDoorCard } from "redux/doors/doors-operations";
 import { selectDoorCard, selectFormValue, selectShowForm } from "redux/doors/doors-selectors";
 import { showReserve, setFormValue, clearDoorCard, clearFormValue } from "redux/doors/doors-slice";
 import CardDesktop from "./CardDesktop/CardDesktop";
+import { useMediaQuery } from "react-responsive";
 
 const DoorCard = () => {
     const card = useSelector(selectDoorCard);
@@ -73,6 +74,9 @@ const DoorCard = () => {
         e.preventDefault();
         dispatch(showReserve(!isFormShow));
     };
+    const isDesktop = useMediaQuery({ minWidth: 1280 });
+    const isTablet = useMediaQuery({ minWidth: 768 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
     if (card && formValue) {
         return (
             <>

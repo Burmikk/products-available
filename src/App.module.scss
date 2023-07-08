@@ -1,8 +1,7 @@
 @import "./styles/styles.scss";
-@import "./styles/_colors.scss";
+// @import "./styles/colors.scss";
 
 .main {
-    display: flex;
     min-height: calc(100vh - 80px);
     padding-top: 80px;
     @media screen and (min-width: $leptop) {

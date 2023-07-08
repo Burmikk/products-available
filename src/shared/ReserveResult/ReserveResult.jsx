@@ -1,6 +1,6 @@
 import scss from "./ReserveResult.module.scss";
 import reserveSuccess from "../../assets/reserve_success.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setReserveMessage, showReserve } from "redux/doors/doors-slice";
 import { MdOutlineReportGmailerrorred } from "react-icons/md";
@@ -10,8 +10,6 @@ import { fetchAllDoors } from "redux/doors/doors-operations";
 const ReserveResult = () => {
     const dispatch = useDispatch();
     const { message } = useSelector(selectReserveMessage);
-
-    const location = useLocation();
 
     const resetMessage = () => {
         dispatch(setReserveMessage(""));

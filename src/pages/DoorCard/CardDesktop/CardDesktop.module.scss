@@ -34,12 +34,12 @@
     height: 100px;
 }
 .img_box {
-    width: 445px;
+    min-width: 445px;
     height: 590px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 80px;
+    margin-right: 70px;
     border-radius: 8px;
     border: 1px solid #bebebe;
 }
@@ -48,7 +48,9 @@
     width: 265px;
     height: 509px;
 }
-
+.card_info {
+    flex-grow: 1;
+}
 .title {
     font-size: 24px;
     font-weight: 600;
@@ -64,16 +66,20 @@
 .form {
     display: flex;
     margin-bottom: 20px;
+    gap: 16px;
 }
 
+.select_wrapper {
+    max-width: 267px;
+    flex-grow: 1;
+}
 .select {
-    width: 267px;
+    width: 100%;
     height: 40px;
     padding: 10px;
     font-size: 14px;
     line-height: 1.2;
     outline: none;
-    margin-right: 16px;
     border-radius: 4px;
     border: 1px solid #bebebe;
 }
@@ -108,11 +114,13 @@
     line-height: 38px;
 }
 .details_list {
+    max-width: 600px;
     border-radius: 4px;
     border: 1px solid #bebebe;
 }
 .details_item {
     display: flex;
+    width: inherit;
 
     &:nth-child(even) {
         background-color: #eeeeef;
@@ -122,8 +130,9 @@
     }
 }
 .details_text {
+    min-width: 250px;
+    width: calc(100% / 2);
     padding: 10px 16px;
-    width: 300px;
     height: 40px;
     font-size: 14px;
     line-height: 1.2;
