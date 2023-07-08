@@ -120,6 +120,7 @@
 }
 .details_item {
     display: flex;
+    align-items: center;
     width: inherit;
 
     &:nth-child(even) {
@@ -133,7 +134,7 @@
     min-width: 250px;
     width: calc(100% / 2);
     padding: 10px 16px;
-    height: 40px;
+    min-height: 40px;
     font-size: 14px;
     line-height: 1.2;
     &:not(:last-child) {
