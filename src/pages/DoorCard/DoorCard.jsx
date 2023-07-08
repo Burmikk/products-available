@@ -7,6 +7,7 @@ import { selectDoorCard, selectFormValue, selectShowForm } from "redux/doors/doo
 import { showReserve, setFormValue, clearDoorCard, clearFormValue } from "redux/doors/doors-slice";
 import CardDesktop from "./CardDesktop/CardDesktop";
 import { useMediaQuery } from "react-responsive";
+import CardTablet from "./CardTablet/CardTablet";
 
 const DoorCard = () => {
     const card = useSelector(selectDoorCard);
@@ -75,18 +76,29 @@ const DoorCard = () => {
         dispatch(showReserve(!isFormShow));
     };
     const isDesktop = useMediaQuery({ minWidth: 1280 });
-    const isTablet = useMediaQuery({ minWidth: 768 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
     const isMobile = useMediaQuery({ maxWidth: 767 });
     if (card && formValue) {
         return (
             <>
-                <CardDesktop
-                    select={select}
-                    onChange={handleSelect}
-                    handleClickImg={handleClickImg}
-                    bigImg={bigImg}
-                    handleSubmit={handleSubmit}
-                />
+                {isDesktop && (
+                    <CardDesktop
+                        select={select}
+                        onChange={handleSelect}
+                        handleClickImg={handleClickImg}
+                        bigImg={bigImg}
+                        handleSubmit={handleSubmit}
+                    />
+                )}
+                {isTablet && (
+                    <CardTablet
+                        select={select}
+                        onChange={handleSelect}
+                        handleClickImg={handleClickImg}
+                        bigImg={bigImg}
+                        handleSubmit={handleSubmit}
+                    />
+                )}
             </>
         );
     }
