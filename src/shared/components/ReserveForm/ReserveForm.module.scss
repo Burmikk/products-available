@@ -1,0 +1,15 @@
+@import "../../../styles/breakpoints";
+.reserve_wrapper {
+    position: relative;
+    width: calc(100vw - 40px);
+    // height: 496px;
+    padding: 40px 32px;
+    border-radius: 8px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    @media screen and (min-width: $tablet) {
+        width: 475px;
+        height: 452px;
+    }
+}

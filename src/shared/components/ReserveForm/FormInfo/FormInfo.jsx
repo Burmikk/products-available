@@ -5,12 +5,12 @@ import { showReserve } from "redux/doors/doors-slice";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { selectFormValue } from "redux/doors/doors-selectors";
 import { fetchReservation } from "redux/doors/doors-operations";
-import Select from "shared/Select/Select";
+import Select from "shared/components/Select/Select";
 
-const FormInfo = ({ isSelect }) => {
+const FormInfo = ({ isSelect, text }) => {
     const [select, setSelect] = useState(isSelect);
     const [name, setName] = useState("");
-    const [selectText, setSelectText] = useState();
+    const [selectText, setSelectText] = useState(text);
     const dispatch = useDispatch();
     const formValue = useSelector(selectFormValue);
 
@@ -57,21 +57,7 @@ const FormInfo = ({ isSelect }) => {
                     <img className={scss.img} src={formValue.image} alt="двері" />
                     <div className={scss.description_box}>
                         <h2 className={scss.description_title}>{formValue.name}</h2>
-                        {/* <select value={select} className={scss.select} onChange={handleSelect}>
-                            {select === "" && <option className={scss.select_text}>Виберіть розмір</option>}
-                            <option value="right_8" className={scss.select_text}>
-                                850 х 2030 / права
-                            </option>
-                            <option value="left_8" className={scss.select_text}>
-                                850 х 2030 / ліва
-                            </option>
-                            <option value="right_9" className={scss.select_text}>
-                                950 х 2030 / права
-                            </option>
-                            <option value="left_9" className={scss.select_text}>
-                                950 х 2030 / ліва
-                            </option>
-                        </select> */}
+
                         <Select select={select} onChange={handleSelect} />
                         <p className={scss.price}>{`${formattedPrice} грн`}</p>
                     </div>

@@ -1,5 +1,5 @@
 import scss from "./ReserveResult.module.scss";
-import reserveSuccess from "../../assets/reserve_success.svg";
+import reserveSuccess from "../../../assets/reserve_success.svg";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setReserveMessage, showReserve } from "redux/doors/doors-slice";

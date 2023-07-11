@@ -6,8 +6,8 @@ import { selectAllFilters } from "redux/filter/filter-selectors";
 import { fetchFilterDoors } from "redux/doors/doors-operations";
 import FilterList from "./FilterList/FilterList";
 import { IoOptionsOutline } from "react-icons/io5";
-
 import { showFilter } from "redux/filter/filter-slice";
+import { nanoid } from "nanoid";
 
 const Filter = () => {
     const [radioValue, setRadioValue] = useState();
@@ -60,9 +60,9 @@ const Filter = () => {
     };
 
     const filterStyle = isFilterShown ? `${scss.filter} ${scss.show_filter}` : ` ${scss.filter}`;
-    const filterList = allFilters.map((item, index) => (
+    const filterList = allFilters.map((item) => (
         <FilterList
-            key={index}
+            key={nanoid()}
             filterName={item.name}
             filterTitle={item.title}
             data={item.data}

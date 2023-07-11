@@ -1,27 +1,20 @@
 import scss from "./CardDesktop.module.scss";
-import ReserveForm from "shared/ReserveForm/ReserveForm";
+import ReserveForm from "shared/components/ReserveForm/ReserveForm";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectDoorCard, selectFormValue, selectShowForm } from "redux/doors/doors-selectors";
+import { selectDoorCard, selectShowForm } from "redux/doors/doors-selectors";
 
-const CardDesktop = ({ select, onChange, handleClickImg, bigImg, handleSubmit }) => {
+import Select from "shared/components/Select/Select";
+
+const CardDesktop = ({ select, selectText, onChange, handleClickImg, bigImg, handleSubmit }) => {
     const card = useSelector(selectDoorCard);
-    const formValue = useSelector(selectFormValue);
     const isFormShow = useSelector(selectShowForm);
 
     const formattedPrice = card.door_model.retail_price.toLocaleString();
 
-    const options = formValue.sizes
-        .filter((item) => item.quantity > 0)
-        .map((item) => (
-            <option value={item.name} className={scss.select_text}>
-                {item.text}
-            </option>
-        ));
-
     return (
         <>
-            {isFormShow && <ReserveForm isSelect={select} />}
+            {isFormShow && <ReserveForm isSelect={select} selectText={selectText} />}
             <div className={scss.card}>
                 <Link className={scss.link} to={"/"}>
                     На головну
@@ -61,10 +54,7 @@ const CardDesktop = ({ select, onChange, handleClickImg, bigImg, handleSubmit })
                             <p className={scss.price}>{`${formattedPrice} грн`}</p>
                             <form className={scss.form} onSubmit={handleSubmit}>
                                 <div className={scss.select_wrapper}>
-                                    <select className={scss.select} onChange={onChange}>
-                                        {select === "" && <option className={scss.select_text}>Виберіть розмір</option>}
-                                        {options}
-                                    </select>
+                                    <Select select={select} onChange={onChange} />
                                 </div>
                                 <button className={scss.btn}>Забронювати</button>
                             </form>

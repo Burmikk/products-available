@@ -4,10 +4,10 @@ import { MagnifyingGlass } from "react-loader-spinner";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllDoors, selectIsLoading, selectTotalDoors } from "redux/doors/doors-selectors";
 import { selectShowForm } from "redux/doors/doors-selectors";
-import ReserveForm from "shared/ReserveForm/ReserveForm";
+import ReserveForm from "shared/components/ReserveForm/ReserveForm";
 import { useState } from "react";
 import { fetchLoadMoreDoors } from "redux/doors/doors-operations";
-import Modal from "shared/Modal/Modal";
+import Modal from "shared/components/Modal/Modal";
 import { selectShowFilter } from "redux/filter/filter-selectors";
 
 const DoorsList = () => {

@@ -8,16 +8,18 @@ import { showReserve, setFormValue, clearDoorCard, clearFormValue } from "redux/
 import CardDesktop from "./CardDesktop/CardDesktop";
 import { useMediaQuery } from "react-responsive";
 import CardTablet from "./CardTablet/CardTablet";
+import CardMobile from "./CardMobile/CardMobile";
 
 const DoorCard = () => {
     const card = useSelector(selectDoorCard);
     const formValue = useSelector(selectFormValue);
     const isFormShow = useSelector(selectShowForm);
+    const [selectText, setSelectText] = useState();
 
     const params = useParams();
     const dispatch = useDispatch();
 
-    const [select, setSelect] = useState("");
+    const [select, setSelect] = useState();
     const [bigImg, setBigImg] = useState(null);
 
     useEffect(() => {
@@ -64,6 +66,8 @@ const DoorCard = () => {
 
     const handleSelect = (e) => {
         const { value } = e.target;
+        const optionText = e.target.options[e.target.selectedIndex].text;
+        setSelectText(optionText);
         setSelect(value);
     };
 
@@ -77,13 +81,14 @@ const DoorCard = () => {
     };
     const isDesktop = useMediaQuery({ minWidth: 1280 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isMobile = useMediaQuery({ minWidth: 365, maxWidth: 767 });
     if (card && formValue) {
         return (
             <>
                 {isDesktop && (
                     <CardDesktop
                         select={select}
+                        selectText={selectText}
                         onChange={handleSelect}
                         handleClickImg={handleClickImg}
                         bigImg={bigImg}
@@ -93,6 +98,17 @@ const DoorCard = () => {
                 {isTablet && (
                     <CardTablet
                         select={select}
+                        selectText={selectText}
+                        onChange={handleSelect}
+                        handleClickImg={handleClickImg}
+                        bigImg={bigImg}
+                        handleSubmit={handleSubmit}
+                    />
+                )}
+                {isMobile && (
+                    <CardMobile
+                        select={select}
+                        selectText={selectText}
                         onChange={handleSelect}
                         handleClickImg={handleClickImg}
                         bigImg={bigImg}
