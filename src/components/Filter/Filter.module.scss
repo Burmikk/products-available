@@ -18,16 +18,16 @@
 
 .filter {
     position: fixed;
+    transform: translate(-100%, 0);
+    transition: opacity 1s ease, transform 0.5s ease;
+    pointer-events: none;
+    opacity: 0;
+
     min-width: 100vw;
     height: calc(100vh - 80px);
     padding: 24px 32px;
-    padding-bottom: 20px;
-    opacity: 0;
     z-index: 1;
-    transform: translate(-100%, 0);
     background-color: #fff;
-    pointer-events: none;
-    transition: opacity 1s ease, transform 0.5s ease;
     overflow: auto;
 
     @media screen and (min-width: $tablet) {
@@ -51,8 +51,10 @@
 }
 
 .btn {
+    position: sticky;
+    bottom: 0;
     display: block;
-    width: 225px;
+    width: 250px;
     height: 48px;
     margin: 0 auto;
     background: $accent_color;
@@ -69,5 +71,9 @@
     }
     &:active {
         background-color: $active_accent_color;
+    }
+    @media screen and (min-width: $tablet) {
+        width: 225px;
+        position: static;
     }
 }

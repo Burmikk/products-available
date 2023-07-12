@@ -77,8 +77,6 @@ const FilterList = ({ filterTitle, data, filterName, getRadioValue, getRadioName
         );
     });
 
-    // const minLength = data.length > 4 ? `${scss.filter_wrapper} ${scss.new_styles}` : scss.filter_wrapper;
-
     return (
         <div className={scss.filter_wrapper}>
             <div className={scss.title_box}>

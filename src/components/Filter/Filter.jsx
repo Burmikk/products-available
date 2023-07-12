@@ -1,5 +1,5 @@
 import scss from "./Filter.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { selectShowFilter } from "redux/filter/filter-selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllFilters } from "redux/filter/filter-selectors";
@@ -60,16 +60,20 @@ const Filter = () => {
     };
 
     const filterStyle = isFilterShown ? `${scss.filter} ${scss.show_filter}` : ` ${scss.filter}`;
-    const filterList = allFilters.map((item) => (
-        <FilterList
-            key={nanoid()}
-            filterName={item.name}
-            filterTitle={item.title}
-            data={item.data}
-            getRadioValue={addRadioValue}
-            getRadioName={addRadioName}
-        />
-    ));
+    const filterList = useMemo(
+        () =>
+            allFilters.map((item) => (
+                <FilterList
+                    key={nanoid()}
+                    filterName={item.name}
+                    filterTitle={item.title}
+                    data={item.data}
+                    getRadioValue={addRadioValue}
+                    getRadioName={addRadioName}
+                />
+            )),
+        [allFilters]
+    );
     return (
         <>
             <div className={scss.icon_wrapper} onClick={toggelShowFilter}>
@@ -77,6 +81,7 @@ const Filter = () => {
             </div>
             <form className={filterStyle} onSubmit={handleSubmit}>
                 {filterList}
+
                 <button type="submit" className={scss.btn}>
                     Показати
                 </button>
