@@ -62,7 +62,7 @@ const FormInfo = ({ isSelect, text }) => {
                         <p className={scss.price}>{`${formattedPrice} грн`}</p>
                     </div>
                 </div>
-                <div>
+                <div className={scss.btn_wrapper}>
                     <button type="button" className={`${scss.btn} ${scss.cancel}`} onClick={handleClose}>
                         Відмінити
                     </button>

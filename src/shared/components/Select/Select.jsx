@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { selectFormValue } from "redux/doors/doors-selectors";
 import scss from "./Select.module.scss";
 import { useMemo } from "react";
+import { nanoid } from "nanoid";
 
 const Select = ({ select = "", onChange }) => {
     const formValue = useSelector(selectFormValue);
@@ -10,7 +11,7 @@ const Select = ({ select = "", onChange }) => {
             formValue.sizes
                 .filter((item) => item.quantity > 0)
                 .map((item) => (
-                    <option value={item.name} className={scss.select_text}>
+                    <option key={nanoid()} value={item.name} className={scss.select_text}>
                         {item.text}
                     </option>
                 )),

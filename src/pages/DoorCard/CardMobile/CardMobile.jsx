@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Select from "shared/components/Select/Select";
 
-const CardMobile = ({ select, onChange, handleClickImg, bigImg, handleSubmit }) => {
+const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
     const card = useSelector(selectDoorCard);
     const isFormShow = useSelector(selectShowForm);
 
@@ -16,7 +16,7 @@ const CardMobile = ({ select, onChange, handleClickImg, bigImg, handleSubmit }) 
 
     return (
         <>
-            {isFormShow && <ReserveForm isSelect={select} />}
+            {isFormShow && <ReserveForm isSelect={select} selectText={selectText} />}
             <div className={scss.card}>
                 <div className={scss.card_wrapper}>
                     <div className={scss.link_wrapper}>

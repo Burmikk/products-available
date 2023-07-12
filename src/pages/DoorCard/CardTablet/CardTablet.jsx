@@ -5,14 +5,14 @@ import { useSelector } from "react-redux";
 import { selectDoorCard, selectShowForm } from "redux/doors/doors-selectors";
 import Select from "shared/components/Select/Select";
 
-const CardTablet = ({ select, onChange, handleClickImg, bigImg, handleSubmit }) => {
+const CardTablet = ({ select, selectText, onChange, handleClickImg, bigImg, handleSubmit }) => {
     const card = useSelector(selectDoorCard);
     const isFormShow = useSelector(selectShowForm);
     const formattedPrice = card.door_model.retail_price.toLocaleString();
 
     return (
         <>
-            {isFormShow && <ReserveForm isSelect={select} />}
+            {isFormShow && <ReserveForm isSelect={select} selectText={selectText} />}
             <div className={scss.card}>
                 <div className={scss.card_wrapper}>
                     <div className={scss.img_box}>
