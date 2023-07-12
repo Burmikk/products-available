@@ -5,13 +5,20 @@
     height: inherit;
 }
 .door_list {
-    height: calc(100vh - 80px);
+    // height: calc(100vh - 80px);
     padding: 35px;
     overflow: auto;
     flex-grow: 1;
     background-color: $list_background_color;
-    @media screen and (min-width: $leptop) {
-        height: calc(100vh - 100px);
+    @media screen and (min-width: $tablet) {
+        // height: calc(100vh - 100px);
+        height: auto;
+        overflow: visible;
+    }
+    @media screen and (min-width: $laptop) {
+        // height: calc(100vh - 100px);
+        height: auto;
+        overflow: visible;
     }
 }
 .title_wrapper {

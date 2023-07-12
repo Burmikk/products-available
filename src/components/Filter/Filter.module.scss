@@ -11,7 +11,7 @@
     color: $icon_color;
     cursor: pointer;
 
-    @media screen and (min-width: $leptop) {
+    @media screen and (min-width: $laptop) {
         display: none;
     }
 }
@@ -33,7 +33,7 @@
     @media screen and (min-width: $tablet) {
         min-width: 350px;
     }
-    @media screen and (min-width: $leptop) {
+    @media screen and (min-width: $laptop) {
         height: calc(100vh - 100px);
 
         position: relative;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import scss from "./Footer.module.scss";
 const Footer = () => {
     return (
-        <div className={scss.footer}>
+        <footer className={scss.footer}>
             <div className={scss.logo_wrapper}>
                 <Link to="/">
                     <img className={scss.logo_img} src={logo} alt="logo" />
@@ -24,7 +24,7 @@ const Footer = () => {
                     <p>&copy; 2023 Форт Нокс. Всі права захищені.</p>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };
 export default Footer;
