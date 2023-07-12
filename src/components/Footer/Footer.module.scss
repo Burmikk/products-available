@@ -1,0 +1,61 @@
+@import "../../styles/breakpoints";
+.footer {
+    display: flex;
+    gap: 70px;
+    background-color: #5e5b60;
+    padding: 30px;
+    @media screen and (min-width: $tablet) {
+        align-items: center;
+        padding: 0 30px;
+    }
+    @media screen and (min-width: $desktop) {
+        padding-left: 140px;
+        padding-right: 50px;
+        gap: 178px;
+    }
+}
+.footer_box {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media screen and (min-width: $tablet) {
+        height: 104px;
+        align-items: center;
+        flex-grow: 1;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    @media screen and (min-width: $desktop) {
+        height: 114px;
+    }
+}
+.info_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media screen and (min-width: $tablet) {
+        gap: 50px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+.contacts {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #fff;
+}
+.copyright {
+    color: #fff;
+    font-size: 10px;
+    line-height: 18px;
+    @media screen and (min-width: $tablet) {
+        align-self: flex-end;
+        padding-bottom: 8px;
+    }
+    @media screen and (min-width: $tablet) {
+        font-size: 12px;
+        padding-bottom: 18px;
+    }
+}
