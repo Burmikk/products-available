@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "swiper/css";
+import "swiper/css/pagination";
 import "./styles/styles.scss";
 import App from "./App";
 import { store } from "./redux/store";

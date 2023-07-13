@@ -13,3 +13,32 @@ body {
     color: $text_color;
     background-color: #fff;
 }
+.swiper {
+    width: 235px;
+    margin-bottom: 10px;
+}
+.swiper-slide {
+    padding: 16px;
+    border: 1px solid #bebebe;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.swiper-pagination {
+    position: static;
+}
+
+.swiper-pagination-bullet {
+    width: 20px;
+    height: 4px;
+    border-radius: 4px;
+    border-radius: 4px;
+    background-color: #bebebe;
+}
+
+.swiper-pagination-bullet-active {
+    width: 32px;
+    height: 4px;
+    background: $accent_color;
+}

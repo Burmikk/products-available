@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectDoorCard, selectShowForm } from "redux/doors/doors-selectors";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { Pagination } from "swiper/modules";
 import Select from "shared/components/Select/Select";
 import { useEffect, useState, useRef } from "react";
 
@@ -13,40 +13,29 @@ const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
     const card = useSelector(selectDoorCard);
     const isFormShow = useSelector(selectShowForm);
     const [isFixed, setIsFixed] = useState(true);
-    const [btnPosition, setBtnPosition] = useState();
 
     const btnRef = useRef();
     const listRef = useRef();
 
     useEffect(() => {
-        if (btnRef.current) {
-            const buttonRect = btnRef.current.getBoundingClientRect();
-            const btnBottom = buttonRect.top;
-            setBtnPosition(btnBottom);
-        }
+        const handleScroll = () => {
+            const listRect = listRef.current.offsetTop + listRef.current.offsetHeight + 92;
+            const top = window.scrollY + window.innerHeight;
+
+            if (top >= listRect) {
+                setIsFixed(false);
+            } else {
+                setIsFixed(true);
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
-    useEffect(() => {
-        if (btnPosition) {
-            const handleScroll = () => {
-                const listRect = listRef.current.offsetTop + listRef.current.offsetHeight + 98;
-                const top = window.scrollY + window.innerHeight;
-
-                if (top >= listRect) {
-                    setIsFixed(false);
-                } else {
-                    setIsFixed(true);
-                }
-            };
-            window.addEventListener("scroll", handleScroll);
-            return () => {
-                window.removeEventListener("scroll", handleScroll);
-            };
-        }
-    }, [btnPosition]);
-
     const formattedPrice = card.door_model.retail_price.toLocaleString();
-    const btnStyle = btnPosition && isFixed ? `${scss.btn} ${scss.btn_fixed}` : `${scss.btn}`;
+    const btnStyle = isFixed ? `${scss.btn} ${scss.btn_fixed}` : `${scss.btn}`;
     return (
         <>
             {isFormShow && <ReserveForm isSelect={select} selectText={selectText} />}
@@ -70,20 +59,17 @@ const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
                             </div>
                         </div>
                     </div>
-                    <div className={scss.img_box}>
-                        <Swiper slidesPerView={1}>
+                    <Swiper spaceBetween={20} pagination={(true, { clickable: true })} modules={[Pagination]}>
+                        <SwiperSlide>
+                            <img className={scss.img} src={card.door_model.outside_image} alt="двері" />
+                        </SwiperSlide>
+                        {card.door_model.inside_image && (
                             <SwiperSlide>
-                                <img className={scss.img} src={card.door_model.outside_image} alt="двері" />
+                                <img className={scss.img} src={card.door_model.inside_image} alt="двері" />
                             </SwiperSlide>
-                            {card.door_model.inside_image && (
-                                <SwiperSlide>
-                                    <img className={scss.img} src={card.door_model.inside_image} alt="двері" />
-                                </SwiperSlide>
-                            )}
-                        </Swiper>
-                    </div>
-
-                    <div style={{ marginBottom: isFixed ? 68 : 20 }} ref={listRef} className={scss.options_container}>
+                        )}
+                    </Swiper>
+                    <div style={{ marginBottom: isFixed ? 68 : 16 }} ref={listRef} className={scss.options_container}>
                         <h3 className={scss.details_title}>Характеристики</h3>
                         <ul className={scss.details_list}>
                             <li className={scss.details_item}>
