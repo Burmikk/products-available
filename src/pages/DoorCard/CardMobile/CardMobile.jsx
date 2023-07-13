@@ -29,8 +29,8 @@ const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
     useEffect(() => {
         if (btnPosition) {
             const handleScroll = () => {
-                const listRect = listRef.current.offsetTop;
-                const top = window.scrollY + 112;
+                const listRect = listRef.current.offsetTop + listRef.current.offsetHeight + 98;
+                const top = window.scrollY + window.innerHeight;
 
                 if (top >= listRect) {
                     setIsFixed(false);
