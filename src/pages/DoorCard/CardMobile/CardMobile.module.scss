@@ -16,10 +16,14 @@
 }
 
 .img {
+    box-sizing: content-box;
     display: block;
     margin: 0 auto;
     width: 203px;
     height: 393px;
+    border: 1px solid #bebebe;
+    border-radius: 8px;
+    padding: 16px;
 }
 .card_info {
     flex-grow: 1;

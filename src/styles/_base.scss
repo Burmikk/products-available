@@ -14,14 +14,12 @@ body {
     background-color: #fff;
 }
 .swiper {
-    width: 235px;
+    width: 100%;
     margin-bottom: 10px;
 }
+.swiper-wrapper {
+}
 .swiper-slide {
-    padding: 16px;
-    border: 1px solid #bebebe;
-    border-radius: 8px;
-    margin: 0 auto;
     margin-bottom: 10px;
 }
 

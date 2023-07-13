@@ -59,7 +59,7 @@ const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
                             </div>
                         </div>
                     </div>
-                    <Swiper spaceBetween={20} pagination={(true, { clickable: true })} modules={[Pagination]}>
+                    <Swiper pagination={(true, { clickable: true })} modules={[Pagination]}>
                         <SwiperSlide>
                             <img className={scss.img} src={card.door_model.outside_image} alt="двері" />
                         </SwiperSlide>
