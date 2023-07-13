@@ -23,6 +23,7 @@ const DoorCard = () => {
     const [bigImg, setBigImg] = useState(null);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(fetchDoorCard(params.doorId));
         return () => {
             dispatch(clearDoorCard());
