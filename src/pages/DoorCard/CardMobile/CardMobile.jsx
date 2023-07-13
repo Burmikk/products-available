@@ -7,13 +7,46 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Select from "shared/components/Select/Select";
+import { useEffect, useState, useRef } from "react";
 
 const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
     const card = useSelector(selectDoorCard);
     const isFormShow = useSelector(selectShowForm);
+    const [isFixed, setIsFixed] = useState(true);
+    const [btnPosition, setBtnPosition] = useState();
+
+    const btnRef = useRef();
+    const listRef = useRef();
+
+    useEffect(() => {
+        if (btnRef.current) {
+            const buttonRect = btnRef.current.getBoundingClientRect();
+            const btnBottom = buttonRect.top;
+            setBtnPosition(btnBottom);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (btnPosition) {
+            const handleScroll = () => {
+                const listRect = listRef.current.offsetTop;
+                const top = window.scrollY + 112;
+
+                if (top >= listRect) {
+                    setIsFixed(false);
+                } else {
+                    setIsFixed(true);
+                }
+            };
+            window.addEventListener("scroll", handleScroll);
+            return () => {
+                window.removeEventListener("scroll", handleScroll);
+            };
+        }
+    }, [btnPosition]);
 
     const formattedPrice = card.door_model.retail_price.toLocaleString();
-
+    const btnStyle = btnPosition && isFixed ? `${scss.btn} ${scss.btn_fixed}` : `${scss.btn}`;
     return (
         <>
             {isFormShow && <ReserveForm isSelect={select} selectText={selectText} />}
@@ -49,10 +82,8 @@ const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
                             )}
                         </Swiper>
                     </div>
-                    <button onClick={handleSubmit} className={scss.btn}>
-                        Забронювати
-                    </button>
-                    <div className={scss.options_container}>
+
+                    <div style={{ marginBottom: isFixed ? 68 : 20 }} ref={listRef} className={scss.options_container}>
                         <h3 className={scss.details_title}>Характеристики</h3>
                         <ul className={scss.details_list}>
                             <li className={scss.details_item}>
@@ -89,6 +120,9 @@ const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
                             </li>
                         </ul>
                     </div>
+                    <button ref={btnRef} onClick={handleSubmit} className={btnStyle}>
+                        Забронювати
+                    </button>
                 </div>
             </div>
         </>

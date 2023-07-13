@@ -74,18 +74,13 @@
     border: 1px solid #bebebe;
 }
 .btn {
-    position: fixed;
-    z-index: 2;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
     width: 250px;
     height: 48px;
     border-radius: 4px;
     background-color: $accent_color;
     border-style: none;
     color: #fff;
-
+    margin: 0 auto;
     font-size: 16px;
     font-family: Open Sans;
     font-weight: 600;
@@ -101,8 +96,15 @@
         color: #fff;
     }
 }
+
+.btn_fixed {
+    position: fixed;
+    z-index: 2;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .options_container {
-    padding-bottom: 80px;
 }
 .details_title {
     margin-bottom: 16px;
