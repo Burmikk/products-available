@@ -38,8 +38,8 @@
         min-width: 350px;
     }
     @media screen and (min-width: $laptop) {
-        height: calc(100vh - 100px);
-
+        // height: calc(100vh - 100px);
+        height: auto;
         position: relative;
         pointer-events: all;
         opacity: 1;

@@ -27,7 +27,8 @@ const DoorsList = () => {
 
     if (!isLoading && doors.length === 0) {
         return (
-            <div className={scss.door_list}>
+            // <div className={scss.door_list}>
+            <div className={scss.list_container}>
                 <div className={scss.title_wrapper}>
                     <h2 className={scss.title}>Залишок дверей на складі</h2>
                 </div>
@@ -35,6 +36,7 @@ const DoorsList = () => {
                     <h2 className={scss.text}> Нажаль, у наявності зараз нічого немає за вашим запитом</h2>
                 </div>
             </div>
+            // </div>
         );
     } else {
         return (

@@ -15,7 +15,13 @@
     }
 }
 .list_container {
-    height: inherit;
+    height: calc(100vh - 80px);
+    flex-grow: 1;
+    padding: 35px;
+    background-color: $list_background_color;
+    @media screen and (min-width: $laptop) {
+        height: auto;
+    }
 }
 .door_list {
     padding: 35px;
@@ -23,7 +29,6 @@
     flex-grow: 1;
     background-color: $list_background_color;
     @media screen and (min-width: $tablet) {
-        // height: calc(100vh - 100px);
         height: auto;
         overflow: visible;
     }
