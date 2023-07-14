@@ -96,6 +96,12 @@ const CardTablet = ({ select, selectText, onChange, handleClickImg, bigImg, hand
                             <p className={scss.details_text}>Нержавіючий поріг</p>
                             <p className={scss.details_text}>{card.description.stainless_threshold}</p>
                         </li>
+                        <li className={scss.details_item}>
+                            <p className={scss.details_text}>Додатково</p>
+                            <p className={scss.details_text}>
+                                {card.description.optional === null ? "-" : card.description.optional}
+                            </p>
+                        </li>
                     </ul>
                 </div>
             </div>

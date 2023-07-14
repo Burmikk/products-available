@@ -76,7 +76,7 @@ const doorsSlice = createSlice({
             })
             .addCase(fetchReservation.pending, (state) => {
                 state.error = null;
-                // state.isLoading = true;
+                state.isLoading = true;
                 state.reserveMessage = "";
             })
             .addCase(fetchReservation.fulfilled, (state, { payload }) => {
