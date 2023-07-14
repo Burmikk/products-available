@@ -29,14 +29,14 @@ const DoorsList = ({ handleDoorRef }) => {
         handleDoorRef(listRef);
     }, [listRef]);
 
-    useEffect(() => {
-        if (isFilterSown) {
-            disableBodyScroll(listRef.current);
-            console.log("listRef.current--->", listRef.current);
-        } else {
-            enableBodyScroll(listRef.current);
-        }
-    }, [isFilterSown]);
+    // useEffect(() => {
+    //     if (isFilterSown) {
+    //         disableBodyScroll(listRef.current);
+    //         console.log("listRef.current--->", listRef.current);
+    //     } else {
+    //         enableBodyScroll(listRef.current);
+    //     }
+    // }, [isFilterSown]);
 
     const doorsList = useMemo(() => doors.map((item) => <Door door={item} key={item.id} />), [doors]);
 
