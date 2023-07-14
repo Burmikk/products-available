@@ -54,7 +54,7 @@ const DoorsList = () => {
         return (
             <div ref={listRef} className={scss.door_list}>
                 <div className={scss.title_wrapper}>
-                    <h2 className={scss.title}>Залишок дверей на складі</h2>
+                    <h2 className={scss.title}>Залишок дверей на складі у м. Запоржжя</h2>
                 </div>
                 {isLoading && (
                     <Modal>
