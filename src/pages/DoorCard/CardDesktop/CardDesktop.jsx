@@ -50,7 +50,7 @@ const CardDesktop = ({ select, selectText, onChange, handleClickImg, bigImg, han
                     </div>
                     <div className={scss.card_info}>
                         <div className={scss.form_container}>
-                            <h2 className={scss.title}>{card.description.name}</h2>
+                            <h2 className={scss.title}>{`${card.collection.name} ${card.door_model.name}`}</h2>
                             <p className={scss.price}>{`${formattedPrice} грн`}</p>
                             <form className={scss.form} onSubmit={handleSubmit}>
                                 <div className={scss.select_wrapper}>

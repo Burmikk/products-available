@@ -35,7 +35,7 @@ const DoorCard = () => {
         if (card) {
             const cardData = {
                 image: card.door_model.outside_image,
-                name: card.description.name,
+                name: `${card.collection.name} ${card.door_model.name}`,
                 id: card.id,
                 price: card.door_model.retail_price,
                 sizes: [
