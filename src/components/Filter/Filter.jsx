@@ -6,6 +6,8 @@ import { selectAllFilters } from "redux/filter/filter-selectors";
 import { fetchFilterDoors } from "redux/doors/doors-operations";
 import FilterList from "./FilterList/FilterList";
 import { IoOptionsOutline } from "react-icons/io5";
+import { BsArrowLeftCircle } from "react-icons/bs";
+
 import { showFilter } from "redux/filter/filter-slice";
 import { nanoid } from "nanoid";
 import { useMediaQuery } from "react-responsive";
@@ -80,7 +82,11 @@ const Filter = () => {
     return (
         <>
             <div className={scss.icon_wrapper} onClick={toggelShowFilter}>
-                <IoOptionsOutline className={scss.icon} size={40} />
+                {isFilterShown ? (
+                    <BsArrowLeftCircle className={scss.icon} size={40} />
+                ) : (
+                    <IoOptionsOutline className={scss.icon} size={40} />
+                )}
             </div>
             <form className={filterStyle} onSubmit={handleSubmit}>
                 {filterList}
