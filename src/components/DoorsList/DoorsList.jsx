@@ -25,13 +25,13 @@ const DoorsList = () => {
     const dispatch = useDispatch();
     const listRef = useRef();
 
-    useEffect(() => {
-        if (isFilterSown) {
-            disableBodyScroll(listRef);
-        } else {
-            enableBodyScroll(listRef);
-        }
-    }, [isFilterSown]);
+    // useEffect(() => {
+    //     if (isFilterSown) {
+    //         disableBodyScroll(listRef);
+    //     } else {
+    //         enableBodyScroll(listRef);
+    //     }
+    // }, [isFilterSown]);
 
     const doorsList = useMemo(() => doors.map((item) => <Door door={item} key={item.id} />), [doors]);
 
