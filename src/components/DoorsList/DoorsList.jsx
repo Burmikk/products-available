@@ -9,11 +9,11 @@ import {
     selectNext,
 } from "redux/doors/doors-selectors";
 import ReserveForm from "shared/components/ReserveForm/ReserveForm";
-import { useEffect, useRef, useMemo } from "react";
+import { useRef, useMemo } from "react";
 import { fetchLoadMoreDoors } from "redux/doors/doors-operations";
 import Modal from "shared/components/Modal/Modal";
-import { selectShowFilter } from "redux/filter/filter-selectors";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+// import { selectShowFilter } from "redux/filter/filter-selectors";
+// import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const DoorsList = () => {
     const doors = useSelector(selectAllDoors);
@@ -21,18 +21,17 @@ const DoorsList = () => {
     const totalDoors = useSelector(selectTotalDoors);
     const isLoading = useSelector(selectIsLoading);
     const isFormShow = useSelector(selectShowForm);
-    const isFilterSown = useSelector(selectShowFilter);
+    // const isFilterSown = useSelector(selectShowFilter);
     const dispatch = useDispatch();
     const listRef = useRef();
-    console.log("listRef--->", listRef.current);
 
-    useEffect(() => {
-        if (isFilterSown) {
-            disableBodyScroll(listRef);
-        } else {
-            enableBodyScroll(listRef);
-        }
-    }, [isFilterSown]);
+    // useEffect(() => {
+    //     if (isFilterSown) {
+    //         disableBodyScroll(listRef);
+    //     } else {
+    //         enableBodyScroll(listRef);
+    //     }
+    // }, [isFilterSown]);
 
     const doorsList = useMemo(() => doors.map((item) => <Door door={item} key={item.id} />), [doors]);
 
@@ -44,7 +43,7 @@ const DoorsList = () => {
         return (
             <div className={scss.list_container}>
                 <div className={scss.title_wrapper}>
-                    <h2 className={scss.title}>Залишок дверей на складі у м. Запоржжя</h2>
+                    <h2 className={scss.title}>Залишок дверей на складі у м. Запоріжжя</h2>
                 </div>
                 <div className={scss.not_found}>
                     <h2 className={scss.text}> Нажаль, у наявності зараз нічого немає за вашим запитом</h2>
@@ -55,7 +54,7 @@ const DoorsList = () => {
         return (
             <div ref={listRef} className={scss.door_list}>
                 <div className={scss.title_wrapper}>
-                    <h2 className={scss.title}>Залишок дверей на складі у м. Запоржжя</h2>
+                    <h2 className={scss.title}>Залишок дверей на складі у м. Запоріжжя</h2>
                 </div>
                 {isLoading && (
                     <Modal>
