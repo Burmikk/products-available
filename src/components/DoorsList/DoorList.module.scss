@@ -64,6 +64,9 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    @media screen and (min-width: $tablet) {
+        justify-content: flex-start;
+    }
 }
 
 .not_found {
