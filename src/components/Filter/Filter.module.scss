@@ -15,7 +15,14 @@
         display: none;
     }
 }
-
+.filter_container {
+    display: flex;
+    flex-direction: column;
+}
+.form_wrapper {
+    flex-grow: 1;
+    background-color: #fff;
+}
 .filter {
     position: fixed;
     transform: translate(-100%, 0);
@@ -34,17 +41,15 @@
 
     @media screen and (min-width: $tablet) {
         padding: 24px 32px;
-
         min-width: 350px;
     }
     @media screen and (min-width: $laptop) {
         // height: calc(100vh - 100px);
-        height: auto;
+        min-height: 100%;
         position: relative;
         pointer-events: all;
         opacity: 1;
         transform: translate(0);
-        overflow: auto;
     }
 }
 
@@ -66,19 +71,13 @@
     display: block;
     width: 250px;
     height: 48px;
-    // width: 60px;
-    // height: 60px;
-    // padding-top: 5px;
 
-    // margin: 0 auto;
     background: $accent_color;
-    // border-radius: 50%;
     border-radius: 4px;
     border-style: none;
     font-family: "Open Sans";
     font-weight: 600;
     font-size: 16px;
-    // font-size: 28px;
     line-height: 1.4;
     color: #fff;
     cursor: pointer;
@@ -107,7 +106,7 @@
     }
 }
 
-.show_filter + .btn {
+.show_btn {
     left: 50%;
     transform: translate(-50%);
     opacity: 1;

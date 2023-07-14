@@ -67,6 +67,8 @@ const Filter = () => {
     };
 
     const filterStyle = isFilterShown ? `${scss.filter} ${scss.show_filter}` : ` ${scss.filter}`;
+    const btnStyle = isFilterShown ? `${scss.btn} ${scss.show_btn}` : ` ${scss.btn}`;
+
     const filterList = useMemo(
         () =>
             allFilters.map((item) => (
@@ -90,17 +92,20 @@ const Filter = () => {
                     <IoOptionsOutline className={scss.icon} size={40} />
                 )}
             </div>
-            <form className={filterStyle} onSubmit={handleSubmit}>
-                {filterList}
-                {!isMobile && (
-                    <button type="submit" className={scss.btn}>
-                        Показати
-                    </button>
-                )}
-            </form>
-
+            <div className={scss.filter_container}>
+                <div className={scss.form_wrapper}>
+                    <form className={filterStyle} onSubmit={handleSubmit}>
+                        {filterList}
+                        {!isMobile && (
+                            <button type="submit" className={scss.btn}>
+                                Показати
+                            </button>
+                        )}
+                    </form>
+                </div>
+            </div>
             {isMobile && (
-                <button type="submit" className={scss.btn} onClick={handleSubmit}>
+                <button type="submit" className={btnStyle} onClick={handleSubmit}>
                     Показати
                 </button>
             )}
