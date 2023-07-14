@@ -37,7 +37,7 @@
         height: calc(100vh - 100px);
 
         position: relative;
-        pointer-events: auto;
+        pointer-events: all;
         opacity: 1;
         transform: translate(0);
         overflow: auto;
@@ -51,19 +51,31 @@
 }
 
 .btn {
-    position: sticky;
-    bottom: 0;
+    transform: translate(-100%, 0);
+    transition: opacity 1s ease 0.5s;
+    opacity: 0;
+    pointer-events: none;
+
+    position: fixed;
+    z-index: 3;
+    bottom: 70px;
     display: block;
-    width: 250px;
-    height: 48px;
-    margin: 0 auto;
+    // width: 250px;
+    // height: 48px;
+    padding-top: 5px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    // margin-left: auto;
+    // margin: 0 auto;
     background: $accent_color;
-    border-radius: 4px;
+    // border-radius: 4px;
     border-style: none;
     font-family: "Open Sans";
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.4;
+    // font-weight: 600;
+    // font-size: 16px;
+    font-size: 28px;
+    // line-height: 1.4;
     color: #fff;
     cursor: pointer;
     &:hover {
@@ -73,7 +85,27 @@
         background-color: $active_accent_color;
     }
     @media screen and (min-width: $tablet) {
-        width: 225px;
         position: static;
+
+        width: 225px;
+        height: 48px;
+        margin: 0 auto;
+        padding: 0;
+        border-radius: 4px;
+
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.4;
+
+        transform: translate(0);
+        opacity: 1;
+        pointer-events: all;
     }
+}
+
+.show_filter + .btn {
+    right: 50px;
+    transform: translate(0);
+    opacity: 1;
+    pointer-events: all;
 }

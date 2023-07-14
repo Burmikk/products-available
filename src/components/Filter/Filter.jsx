@@ -8,6 +8,8 @@ import FilterList from "./FilterList/FilterList";
 import { IoOptionsOutline } from "react-icons/io5";
 import { showFilter } from "redux/filter/filter-slice";
 import { nanoid } from "nanoid";
+import { BsSearch } from "react-icons/bs";
+import { useMediaQuery } from "react-responsive";
 
 const Filter = () => {
     const [radioValue, setRadioValue] = useState();
@@ -21,6 +23,8 @@ const Filter = () => {
     const allFilters = useSelector(selectAllFilters);
     //Берет из стейта состояние фильтра (показывать или скрыть)
     const isFilterShown = useSelector(selectShowFilter);
+
+    const isMobile = useMediaQuery({ minWidth: 365, maxWidth: 767 });
 
     const dispatch = useDispatch();
     //Формирует объект для HTTP запроса
@@ -81,12 +85,20 @@ const Filter = () => {
             </div>
             <form className={filterStyle} onSubmit={handleSubmit}>
                 {filterList}
-
-                <button type="submit" className={scss.btn}>
-                    Показати
-                </button>
+                {!isMobile && (
+                    <button type="submit" className={scss.btn}>
+                        Показати
+                    </button>
+                )}
             </form>
+
+            {isMobile && (
+                <button type="submit" className={scss.btn} onClick={handleSubmit}>
+                    <BsSearch />
+                </button>
+            )}
         </>
     );
 };
 export default Filter;
+// 🔍
