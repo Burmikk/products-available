@@ -25,7 +25,7 @@ const Filter = () => {
     //Берет из стейта состояние фильтра (показывать или скрыть)
     const isFilterShown = useSelector(selectShowFilter);
 
-    const isMobile = useMediaQuery({ minWidth: 340, maxWidth: 767 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
 
     const dispatch = useDispatch();
     //Формирует объект для HTTP запроса
