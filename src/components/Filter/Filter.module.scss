@@ -25,12 +25,16 @@
 
     min-width: 100vw;
     height: calc(100vh - 80px);
-    padding: 24px 32px;
+    padding: 24px 0;
     z-index: 1;
     background-color: #fff;
     overflow: auto;
 
+    padding-bottom: 80px;
+
     @media screen and (min-width: $tablet) {
+        padding: 24px 32px;
+
         min-width: 350px;
     }
     @media screen and (min-width: $laptop) {
@@ -58,24 +62,24 @@
 
     position: fixed;
     z-index: 3;
-    bottom: 50px;
+    bottom: 30px;
     display: block;
-    // width: 250px;
-    // height: 48px;
-    padding-top: 5px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    // margin-left: auto;
+    width: 250px;
+    height: 48px;
+    // width: 60px;
+    // height: 60px;
+    // padding-top: 5px;
+
     // margin: 0 auto;
     background: $accent_color;
-    // border-radius: 4px;
+    // border-radius: 50%;
+    border-radius: 4px;
     border-style: none;
     font-family: "Open Sans";
-    // font-weight: 600;
-    // font-size: 16px;
-    font-size: 28px;
-    // line-height: 1.4;
+    font-weight: 600;
+    font-size: 16px;
+    // font-size: 28px;
+    line-height: 1.4;
     color: #fff;
     cursor: pointer;
     &:hover {
@@ -104,8 +108,8 @@
 }
 
 .show_filter + .btn {
-    right: 50px;
-    transform: translate(0);
+    left: 50%;
+    transform: translate(-50%);
     opacity: 1;
     pointer-events: all;
 }

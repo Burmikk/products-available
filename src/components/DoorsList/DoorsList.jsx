@@ -1,6 +1,5 @@
 import Door from "./Door/Door";
 import scss from "./DoorList.module.scss";
-import { MagnifyingGlass } from "react-loader-spinner";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllDoors, selectIsLoading, selectTotalDoors } from "redux/doors/doors-selectors";
 import { selectShowForm } from "redux/doors/doors-selectors";

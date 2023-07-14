@@ -8,7 +8,6 @@ import FilterList from "./FilterList/FilterList";
 import { IoOptionsOutline } from "react-icons/io5";
 import { showFilter } from "redux/filter/filter-slice";
 import { nanoid } from "nanoid";
-import { BsSearch } from "react-icons/bs";
 import { useMediaQuery } from "react-responsive";
 
 const Filter = () => {
@@ -94,7 +93,7 @@ const Filter = () => {
 
             {isMobile && (
                 <button type="submit" className={scss.btn} onClick={handleSubmit}>
-                    <BsSearch />
+                    Показати
                 </button>
             )}
         </>

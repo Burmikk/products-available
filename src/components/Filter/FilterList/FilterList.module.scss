@@ -1,5 +1,5 @@
 @import "../../../styles/colors";
-
+@import "../../../styles/breakpoints";
 .filter_wrapper {
     position: relative;
     margin-bottom: 20px;
@@ -10,6 +10,12 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    background-color: #ffefd9;
+    padding: 0 32px;
+    @media screen and (min-width: $tablet) {
+        background-color: transparent;
+        padding: 0;
+    }
 }
 .title {
     font-weight: 600;
@@ -21,10 +27,15 @@
     line-height: 1.4;
     color: $accent_color;
     cursor: pointer;
+    text-decoration: underline;
 }
 .filter_list {
     overflow: hidden;
     transition: all 0.5s ease;
+    padding: 0 32px;
+    @media screen and (min-width: $tablet) {
+        padding: 0;
+    }
 }
 
 .filter_item {
@@ -75,8 +86,13 @@
 
 .showBtn {
     margin-top: 25px;
+    padding: 0 32px;
+
     font-size: 14px;
     line-height: 1.4;
     color: $accent_color;
     cursor: pointer;
+    @media screen and (min-width: $tablet) {
+        padding: 0;
+    }
 }
