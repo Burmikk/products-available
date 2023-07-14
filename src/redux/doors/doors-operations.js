@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllDoors, getFilteredDoors, getDoorCard, reservation } from "shared/api/fetchDoors";
+import { getAllDoors, getFilteredDoors, getDoorCard, reservation, getMoreDoors } from "shared/api/fetchDoors";
 
 export const fetchAllDoors = createAsyncThunk("doors/fetchAllDoors", async (_, { rejectWithValue }) => {
     try {
@@ -9,9 +9,10 @@ export const fetchAllDoors = createAsyncThunk("doors/fetchAllDoors", async (_, {
         return rejectWithValue(response);
     }
 });
-export const fetchLoadMoreDoors = createAsyncThunk("doors/fetchLoadMoreDoors", async (page, { rejectWithValue }) => {
+
+export const fetchLoadMoreDoors = createAsyncThunk("doors/fetchLoadMoreDoors", async (value, { rejectWithValue }) => {
     try {
-        const { data } = await getAllDoors(page);
+        const { data } = await getMoreDoors(value);
         return data;
     } catch ({ response }) {
         return rejectWithValue(response);

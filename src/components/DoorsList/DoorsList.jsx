@@ -1,24 +1,28 @@
 import Door from "./Door/Door";
 import scss from "./DoorList.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllDoors, selectIsLoading, selectTotalDoors } from "redux/doors/doors-selectors";
-import { selectShowForm } from "redux/doors/doors-selectors";
+import {
+    selectAllDoors,
+    selectIsLoading,
+    selectTotalDoors,
+    selectShowForm,
+    selectNext,
+} from "redux/doors/doors-selectors";
 import ReserveForm from "shared/components/ReserveForm/ReserveForm";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { fetchLoadMoreDoors } from "redux/doors/doors-operations";
 import Modal from "shared/components/Modal/Modal";
 import { selectShowFilter } from "redux/filter/filter-selectors";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const DoorsList = () => {
-    const [page, setPage] = useState(1);
     const doors = useSelector(selectAllDoors);
+    const next = useSelector(selectNext);
     const totalDoors = useSelector(selectTotalDoors);
     const isLoading = useSelector(selectIsLoading);
     const isFormShow = useSelector(selectShowForm);
     const isFilterSown = useSelector(selectShowFilter);
     const dispatch = useDispatch();
-
     const listRef = useRef();
 
     useEffect(() => {
@@ -29,16 +33,14 @@ const DoorsList = () => {
         }
     }, [isFilterSown]);
 
-    const doorsList = doors.map((item) => <Door door={item} key={item.id} />);
+    const doorsList = useMemo(() => doors.map((item) => <Door door={item} key={item.id} />), [doors]);
 
     const loadMoreDoors = () => {
-        setPage((prevState) => prevState + 1);
-        dispatch(fetchLoadMoreDoors(page));
+        dispatch(fetchLoadMoreDoors(next));
     };
 
     if (!isLoading && doors.length === 0) {
         return (
-            // <div className={scss.door_list}>
             <div className={scss.list_container}>
                 <div className={scss.title_wrapper}>
                     <h2 className={scss.title}>Залишок дверей на складі</h2>
@@ -47,7 +49,6 @@ const DoorsList = () => {
                     <h2 className={scss.text}> Нажаль, у наявності зараз нічого немає за вашим запитом</h2>
                 </div>
             </div>
-            // </div>
         );
     } else {
         return (

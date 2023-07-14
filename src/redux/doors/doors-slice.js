@@ -16,6 +16,7 @@ const initialState = {
     showForm: false,
     reserveMessage: "",
     formValue: null,
+    nextPage: "",
 };
 
 const doorsSlice = createSlice({
@@ -29,6 +30,7 @@ const doorsSlice = createSlice({
             })
             .addCase(fetchAllDoors.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
+                state.nextPage = payload.next;
                 state.doors = payload.results;
                 state.totalDoors = payload.count;
             })
@@ -42,6 +44,7 @@ const doorsSlice = createSlice({
             })
             .addCase(fetchLoadMoreDoors.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
+                state.nextPage = payload.next;
                 state.doors = [...state.doors, ...payload.results];
                 state.totalDoors = payload.count;
             })
@@ -55,6 +58,7 @@ const doorsSlice = createSlice({
             })
             .addCase(fetchFilterDoors.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
+                state.nextPage = payload.next;
                 state.doors = payload.results;
                 state.totalDoors = payload.count;
             })
