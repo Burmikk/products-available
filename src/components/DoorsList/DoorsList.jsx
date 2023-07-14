@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllDoors, selectIsLoading, selectTotalDoors } from "redux/doors/doors-selectors";
 import { selectShowForm } from "redux/doors/doors-selectors";
 import ReserveForm from "shared/components/ReserveForm/ReserveForm";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchLoadMoreDoors } from "redux/doors/doors-operations";
 import Modal from "shared/components/Modal/Modal";
 import { selectShowFilter } from "redux/filter/filter-selectors";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const DoorsList = () => {
     const [page, setPage] = useState(1);
@@ -17,6 +18,16 @@ const DoorsList = () => {
     const isFormShow = useSelector(selectShowForm);
     const isFilterSown = useSelector(selectShowFilter);
     const dispatch = useDispatch();
+
+    const listRef = useRef();
+
+    useEffect(() => {
+        if (isFilterSown) {
+            disableBodyScroll(listRef);
+        } else {
+            enableBodyScroll(listRef);
+        }
+    }, [isFilterSown]);
 
     const doorsList = doors.map((item) => <Door door={item} key={item.id} />);
 
@@ -40,7 +51,7 @@ const DoorsList = () => {
         );
     } else {
         return (
-            <div style={isFilterSown ? { overflow: "hidden", pointerEvents: "none" } : {}} className={scss.door_list}>
+            <div ref={listRef} className={scss.door_list}>
                 <div className={scss.title_wrapper}>
                     <h2 className={scss.title}>Залишок дверей на складі</h2>
                 </div>
