@@ -1,5 +1,5 @@
 import scss from "./Filter.module.scss";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { selectShowFilter } from "redux/filter/filter-selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllFilters } from "redux/filter/filter-selectors";
@@ -12,9 +12,10 @@ import { showFilter } from "redux/filter/filter-slice";
 import { nanoid } from "nanoid";
 import { useMediaQuery } from "react-responsive";
 
-const Filter = () => {
+const Filter = ({ handleFormRef }) => {
     const [radioValue, setRadioValue] = useState();
     const [radioName, setRadioName] = useState();
+    const formRef = useRef();
 
     //Хранит значение выбраных фильтров в поле размеры
     const [size, setSize] = useState({});
@@ -29,6 +30,11 @@ const Filter = () => {
 
     const dispatch = useDispatch();
     //Формирует объект для HTTP запроса
+
+    useEffect(() => {
+        handleFormRef(formRef);
+    }, [formRef]);
+
     useEffect(() => {
         const handleRadioChange = () => {
             if (radioValue === "delete") {
@@ -94,7 +100,7 @@ const Filter = () => {
             </div>
             <div className={scss.filter_container}>
                 <div className={scss.form_wrapper}>
-                    <form className={filterStyle} onSubmit={handleSubmit}>
+                    <form ref={formRef} className={filterStyle} onSubmit={handleSubmit}>
                         {filterList}
                         {!isMobile && (
                             <button type="submit" className={scss.btn}>

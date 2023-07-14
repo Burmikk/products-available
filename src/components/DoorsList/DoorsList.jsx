@@ -9,29 +9,34 @@ import {
     selectNext,
 } from "redux/doors/doors-selectors";
 import ReserveForm from "shared/components/ReserveForm/ReserveForm";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { fetchLoadMoreDoors } from "redux/doors/doors-operations";
 import Modal from "shared/components/Modal/Modal";
-// import { selectShowFilter } from "redux/filter/filter-selectors";
-// import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { selectShowFilter } from "redux/filter/filter-selectors";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
-const DoorsList = () => {
+const DoorsList = ({ handleDoorRef }) => {
     const doors = useSelector(selectAllDoors);
     const next = useSelector(selectNext);
     const totalDoors = useSelector(selectTotalDoors);
     const isLoading = useSelector(selectIsLoading);
     const isFormShow = useSelector(selectShowForm);
-    // const isFilterSown = useSelector(selectShowFilter);
+    const isFilterSown = useSelector(selectShowFilter);
     const dispatch = useDispatch();
     const listRef = useRef();
 
-    // useEffect(() => {
-    //     if (isFilterSown) {
-    //         disableBodyScroll(listRef);
-    //     } else {
-    //         enableBodyScroll(listRef);
-    //     }
-    // }, [isFilterSown]);
+    useEffect(() => {
+        handleDoorRef(listRef);
+    }, [listRef]);
+
+    useEffect(() => {
+        if (isFilterSown) {
+            disableBodyScroll(listRef.current);
+            console.log("listRef.current--->", listRef.current);
+        } else {
+            enableBodyScroll(listRef.current);
+        }
+    }, [isFilterSown]);
 
     const doorsList = useMemo(() => doors.map((item) => <Door door={item} key={item.id} />), [doors]);
 
