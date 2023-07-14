@@ -43,7 +43,7 @@ const DoorsList = () => {
         return (
             <div className={scss.list_container}>
                 <div className={scss.title_wrapper}>
-                    <h2 className={scss.title}>Залишок дверей на складі</h2>
+                    <h2 className={scss.title}>Залишок дверей на складі у м. Запоржжя</h2>
                 </div>
                 <div className={scss.not_found}>
                     <h2 className={scss.text}> Нажаль, у наявності зараз нічого немає за вашим запитом</h2>
