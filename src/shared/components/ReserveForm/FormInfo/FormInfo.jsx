@@ -53,7 +53,6 @@ const FormInfo = ({ isSelect, text, getReserveInfo }) => {
         };
 
         getReserveInfo(value);
-        console.log("value--->", value);
         dispatch(fetchReservation(value));
     };
 
