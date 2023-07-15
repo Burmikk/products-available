@@ -97,6 +97,14 @@ const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
                                 <p className={scss.details_text}>{card.description.peephole}</p>
                             </li>
                             <li className={scss.details_item}>
+                                <p className={scss.details_text}>Утеплення коробки</p>
+                                <p className={scss.details_text}>{card.description.insulated_frame}</p>
+                            </li>
+                            <li className={scss.details_item}>
+                                <p className={scss.details_text}>Колір фурнітури</p>
+                                <p className={scss.details_text}>{card.description.hardware_color}</p>
+                            </li>
+                            <li className={scss.details_item}>
                                 <p className={scss.details_text}>Зашиті торці</p>
                                 <p className={scss.details_text}>{card.description.end_decoration}</p>
                             </li>
