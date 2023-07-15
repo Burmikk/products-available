@@ -14,8 +14,8 @@ const ReserveForm = ({ isSelect, selectText }) => {
     useEffect(() => {
         if (error === "failed_password") {
             toast.error("Невірне імʼя або пароль", {
-                position: "top-right",
-                autoClose: 5000,
+                position: "top-center",
+                autoClose: 10000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,

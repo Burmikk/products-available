@@ -30,7 +30,7 @@
     border-radius: 4px;
     border: 1px solid #bebebe;
     padding-left: 16px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     outline: none;
 
     font-family: Open Sans;
@@ -39,9 +39,6 @@
 
     &::placeholder {
         color: $not_avalible_color;
-    }
-    @media screen and (min-width: $tablet) {
-        width: 411px;
     }
 }
 .form {

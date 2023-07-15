@@ -10,6 +10,7 @@ import Select from "shared/components/Select/Select";
 const FormInfo = ({ isSelect, text }) => {
     const [select, setSelect] = useState(isSelect);
     const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
     const [selectText, setSelectText] = useState(text);
     const dispatch = useDispatch();
     const formValue = useSelector(selectFormValue);
@@ -23,8 +24,13 @@ const FormInfo = ({ isSelect, text }) => {
     };
 
     const handleInputChange = (e) => {
-        const { value } = e.target;
-        setName(value);
+        const { value, name } = e.target;
+        if (name === "name") {
+            setName(value.trim());
+        }
+        if (name === "password") {
+            setPassword(value.trim());
+        }
     };
 
     const handleSelect = (e) => {
@@ -41,6 +47,7 @@ const FormInfo = ({ isSelect, text }) => {
             door_id: formValue.id,
             position: select,
             name,
+            password,
             door_name: formValue.name,
             size: selectText,
         };
@@ -55,7 +62,15 @@ const FormInfo = ({ isSelect, text }) => {
                 <AiOutlineCloseCircle className={scss.icon_close} size={32} />
             </div>
             <h2 className={scss.title}>Для підтвердження бронювання, будь ласка, введіть назву ФОП</h2>
-            <input className={scss.input} onChange={handleInputChange} type="text" placeholder="ФОП" />
+            <input className={scss.input} onChange={handleInputChange} type="text" name="name" placeholder="ФОП" />
+            <input
+                className={scss.input}
+                onChange={handleInputChange}
+                type="password"
+                name="password"
+                placeholder="Пароль"
+            />
+
             <form className={scss.form} onSubmit={handleSubmit}>
                 <div className={scss.description}>
                     <img className={scss.img} src={formValue.image} alt="двері" />
@@ -70,7 +85,7 @@ const FormInfo = ({ isSelect, text }) => {
                     <button type="button" className={`${scss.btn} ${scss.cancel}`} onClick={handleClose}>
                         Відмінити
                     </button>
-                    <button disabled={!name || !select} className={scss.btn}>
+                    <button disabled={!name || !select || !password} className={scss.btn}>
                         Бронювати
                     </button>
                 </div>
