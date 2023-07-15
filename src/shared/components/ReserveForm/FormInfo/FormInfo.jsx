@@ -1,9 +1,9 @@
 import scss from "./FormInfo.module.scss";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showReserve } from "redux/doors/doors-slice";
+import { resetError, showReserve } from "redux/doors/doors-slice";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { selectFormValue } from "redux/doors/doors-selectors";
+import { selectError, selectFormValue } from "redux/doors/doors-selectors";
 import { fetchReservation } from "redux/doors/doors-operations";
 import Select from "shared/components/Select/Select";
 
@@ -13,9 +13,13 @@ const FormInfo = ({ isSelect, text }) => {
     const [selectText, setSelectText] = useState(text);
     const dispatch = useDispatch();
     const formValue = useSelector(selectFormValue);
+    const error = useSelector(selectError);
 
     const handleClose = () => {
         dispatch(showReserve(false));
+        if (error) {
+            dispatch(resetError());
+        }
     };
 
     const handleInputChange = (e) => {

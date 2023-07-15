@@ -89,7 +89,7 @@ const doorsSlice = createSlice({
             })
             .addCase(fetchReservation.rejected, (state, { payload }) => {
                 state.isLoading = false;
-                state.error = payload;
+                state.error = payload.data.message;
             });
     },
     reducers: {
@@ -108,8 +108,12 @@ const doorsSlice = createSlice({
         clearFormValue: (state) => {
             state.formValue = null;
         },
+        resetError: (state) => {
+            state.error = null;
+        },
     },
 });
 
-export const { showReserve, setReserveMessage, setFormValue, clearDoorCard, clearFormValue } = doorsSlice.actions;
+export const { showReserve, setReserveMessage, setFormValue, clearDoorCard, clearFormValue, resetError } =
+    doorsSlice.actions;
 export default doorsSlice.reducer;

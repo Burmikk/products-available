@@ -6,3 +6,4 @@ export const selectReserveMessage = (state) => state.doors.reserveMessage;
 export const selectFormValue = (state) => state.doors.formValue;
 export const selectTotalDoors = (state) => state.doors.totalDoors;
 export const selectNext = (state) => state.doors.nextPage;
+export const selectError = (state) => state.doors.error;
