@@ -7,7 +7,7 @@ import { selectError, selectFormValue } from "redux/doors/doors-selectors";
 import { fetchReservation } from "redux/doors/doors-operations";
 import Select from "shared/components/Select/Select";
 
-const FormInfo = ({ isSelect, text }) => {
+const FormInfo = ({ isSelect, text, getReserveInfo }) => {
     const [select, setSelect] = useState(isSelect);
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -51,6 +51,9 @@ const FormInfo = ({ isSelect, text }) => {
             door_name: formValue.name,
             size: selectText,
         };
+
+        getReserveInfo(value);
+        console.log("value--->", value);
         dispatch(fetchReservation(value));
     };
 

@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 .logo {
     margin-bottom: 54px;
@@ -24,7 +25,9 @@
 .text {
     width: 236px;
     text-align: center;
-    margin-bottom: 50px;
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
 }
 .btn {
     display: flex;

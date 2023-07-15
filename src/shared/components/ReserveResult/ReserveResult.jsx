@@ -7,7 +7,7 @@ import { MdOutlineReportGmailerrorred } from "react-icons/md";
 import { selectReserveMessage } from "redux/doors/doors-selectors";
 import { fetchAllDoors } from "redux/doors/doors-operations";
 
-const ReserveResult = () => {
+const ReserveResult = ({ reserveInfo }) => {
     const dispatch = useDispatch();
     const { message } = useSelector(selectReserveMessage);
 
@@ -18,12 +18,15 @@ const ReserveResult = () => {
     };
 
     if (message === "success") {
+        const { name, door_name, size } = reserveInfo;
         return (
             <div className={scss.status}>
                 <div className={scss.status_message}>
                     <img className={scss.logo} src={reserveSuccess} alt="Успіх" />
                     <h3 className={scss.title}>Заброньовано!</h3>
-                    <p className={scss.text}>Бронювання буде активне впродовж наступних 48 годин</p>
+                    <p className={scss.text}>{`ФОП ${name}`}</p>
+                    <p className={scss.text}>{`забронював ${door_name}`}</p>
+                    <p className={scss.text}>{size}</p>
                 </div>
                 <Link onClick={resetMessage} className={scss.btn} to="/">
                     На головну
