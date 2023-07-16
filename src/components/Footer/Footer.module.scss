@@ -1,4 +1,5 @@
 @import "../../styles/breakpoints";
+@import "../../styles/colors";
 .footer {
     display: flex;
     gap: 70px;
@@ -17,7 +18,7 @@
 .footer_box {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     @media screen and (min-width: $tablet) {
         height: 104px;
         align-items: center;
@@ -32,7 +33,7 @@
 .info_wrapper {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     @media screen and (min-width: $tablet) {
         gap: 50px;
         flex-direction: row;
@@ -42,10 +43,18 @@
 .contacts {
     display: flex;
     flex-direction: column;
+    gap: 5px;
     font-size: 14px;
     line-height: 1.4;
     color: #fff;
 }
+.link:hover {
+    color: $accent_color;
+}
+.link:hover p {
+    color: $accent_color;
+}
+
 .copyright {
     color: #fff;
     font-size: 10px;
