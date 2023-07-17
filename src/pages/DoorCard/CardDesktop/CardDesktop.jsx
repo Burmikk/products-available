@@ -76,7 +76,7 @@ const CardDesktop = ({ select, selectText, onChange, handleClickImg, bigImg, han
                                 </li>
                                 <li className={scss.details_item}>
                                     <p className={scss.details_text}>Додатковий замок</p>
-                                    <p className={scss.details_text}>{card.description.main_lock}</p>
+                                    <p className={scss.details_text}>{card.description.additional_lock}</p>
                                 </li>
                                 <li className={scss.details_item}>
                                     <p className={scss.details_text}>Циліндр</p>
