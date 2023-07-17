@@ -39,7 +39,7 @@ const ReserveResult = ({ reserveInfo }) => {
         return (
             <div className={scss.status}>
                 <MdOutlineReportGmailerrorred className={scss.icon} size={100} color="red" />
-                <p className={scss.text}>Вибачте, але даний продукт недоступний.</p>
+                <p className={scss.text}>Вибачте, але цей продукт вже недоступний. Наш менеджер зателефонує Вам.</p>
                 <Link onClick={resetMessage} className={scss.btn} to="/">
                     На головну
                 </Link>
