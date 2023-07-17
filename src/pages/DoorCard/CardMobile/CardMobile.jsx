@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import Select from "shared/components/Select/Select";
 import { useEffect, useState, useRef } from "react";
+import noImg from "../../../assets/no_image.jpg";
 
 const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
     const card = useSelector(selectDoorCard);
@@ -61,7 +62,7 @@ const CardMobile = ({ select, selectText, onChange, handleSubmit }) => {
                     </div>
                     <Swiper pagination={(true, { clickable: true })} modules={[Pagination]}>
                         <SwiperSlide>
-                            <img className={scss.img} src={card.door_model.outside_image} alt="двері" />
+                            <img className={scss.img} src={card.door_model.outside_image || noImg} alt="двері" />
                         </SwiperSlide>
                         {card.door_model.inside_image && (
                             <SwiperSlide>

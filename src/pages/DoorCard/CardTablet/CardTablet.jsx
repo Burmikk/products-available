@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectDoorCard, selectShowForm } from "redux/doors/doors-selectors";
 import Select from "shared/components/Select/Select";
+import noImg from "../../../assets/no_image.jpg";
 
 const CardTablet = ({ select, selectText, onChange, handleClickImg, bigImg, handleSubmit }) => {
     const card = useSelector(selectDoorCard);
@@ -16,7 +17,7 @@ const CardTablet = ({ select, selectText, onChange, handleClickImg, bigImg, hand
             <div className={scss.card}>
                 <div className={scss.card_wrapper}>
                     <div className={scss.img_box}>
-                        <img className={scss.img} src={bigImg || card.door_model.outside_image} alt="двері" />
+                        <img className={scss.img} src={bigImg || card.door_model.outside_image || noImg} alt="двері" />
                     </div>
                     <div className={scss.card_info}>
                         <div className={scss.link_wrapper}>

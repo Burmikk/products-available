@@ -3,6 +3,7 @@ import scss from "./Door.module.scss";
 import { useDispatch } from "react-redux";
 import { showReserve } from "redux/doors/doors-slice";
 import { setFormValue } from "redux/doors/doors-slice";
+import noImg from "../../../assets/no_image.jpg";
 
 const Door = ({ door }) => {
     const dispatch = useDispatch();
@@ -47,7 +48,7 @@ const Door = ({ door }) => {
         <>
             <li className={scss.card}>
                 <Link to={`/${door.id}`}>
-                    <img className={scss.img} src={cardData.image} alt="door" />
+                    <img className={scss.img} src={cardData.image || noImg} alt="door" />
                     <h3 className={scss.title}>{name}</h3>
                 </Link>
                 <p className={scss.size}>

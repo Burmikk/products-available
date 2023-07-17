@@ -3,7 +3,7 @@ import ReserveForm from "shared/components/ReserveForm/ReserveForm";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectDoorCard, selectShowForm } from "redux/doors/doors-selectors";
-
+import noImg from "../../../assets/no_image.jpg";
 import Select from "shared/components/Select/Select";
 
 const CardDesktop = ({ select, selectText, onChange, handleClickImg, bigImg, handleSubmit }) => {
@@ -46,7 +46,7 @@ const CardDesktop = ({ select, selectText, onChange, handleClickImg, bigImg, han
                     )}
 
                     <div className={scss.img_box}>
-                        <img className={scss.img} src={bigImg || card.door_model.outside_image} alt="двері" />
+                        <img className={scss.img} src={bigImg || card.door_model.outside_image || noImg} alt="двері" />
                     </div>
                     <div className={scss.card_info}>
                         <div className={scss.form_container}>
