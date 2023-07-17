@@ -19,20 +19,18 @@
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    // padding: 0 100px;
-    width: 150px;
-    height: 48px;
-    margin: 0 100px;
+    margin: 0 auto;
 
-    @media screen and (min-width: $laptop) {
-        width: 220px;
-        height: 70px;
+    @media screen and (min-width: $tablet) {
+        margin: 0 100px;
     }
 }
 
 .logo_img {
-    width: inherit;
-    height: inherit;
+    width: 150px;
+    height: 48px;
+    @media screen and (min-width: $laptop) {
+        width: 220px;
+        height: 70px;
+    }
 }
