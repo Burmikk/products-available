@@ -14,15 +14,12 @@ import { useMediaQuery } from "react-responsive";
 
 const Filter = () => {
     const [radioValue, setRadioValue] = useState();
-    console.log("radioValue--->", radioValue);
     const [radioName, setRadioName] = useState();
 
     //Хранит значение выбраных фильтров в поле размеры
     const [size, setSize] = useState({});
-    console.log("size--->", size);
     //Хранит значение выбраных фильтров (кроме size)
     const [inputValue, setInputValue] = useState({});
-    console.log("inputValue--->", inputValue);
     //Берет из стейта все существующие фильтра для отрисовки
     const allFilters = useSelector(selectAllFilters);
     //Берет из стейта состояние фильтра (показывать или скрыть)
@@ -59,7 +56,6 @@ const Filter = () => {
     };
 
     const addRadioValue = (value) => {
-        console.log("value--->", value);
         setRadioValue(value);
     };
 
