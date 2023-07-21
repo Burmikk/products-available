@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
     const dispatch = useDispatch();
     const handleUpdate = () => {
-        dispatch(fetchFilter());
-        dispatch(fetchAllDoors());
+        // dispatch(fetchFilter());
+        // dispatch(fetchAllDoors());
     };
     return (
         <header className={scss.header}>

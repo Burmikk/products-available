@@ -14,6 +14,7 @@ import { useMediaQuery } from "react-responsive";
 
 const Filter = () => {
     const [radioValue, setRadioValue] = useState();
+    console.log("radioValue--->", radioValue);
     const [radioName, setRadioName] = useState();
 
     //Хранит значение выбраных фильтров в поле размеры
@@ -58,6 +59,7 @@ const Filter = () => {
     };
 
     const addRadioValue = (value) => {
+        console.log("value--->", value);
         setRadioValue(value);
     };
 

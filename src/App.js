@@ -5,11 +5,13 @@ import Layout from "components/Layout/Layout";
 
 const App = () => {
     return (
-        <Layout>
+        // <Layout>
+        <>
             <NavBar />
             <MainRouter />
             <Footer />
-        </Layout>
+        </>
+        // </Layout>
     );
 };
 
