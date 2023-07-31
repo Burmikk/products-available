@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-// import scss from "./DoorCard.module.scss";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDoorCard } from "redux/doors/doors-operations";
-import { selectDoorCard, selectFormValue, selectShowForm } from "redux/doors/doors-selectors";
+import { selectDoorCard, selectFormValue, selectShowForm, selectIsLoading } from "redux/doors/doors-selectors";
 import { showReserve, setFormValue, clearDoorCard, clearFormValue } from "redux/doors/doors-slice";
 import CardDesktop from "./CardDesktop/CardDesktop";
 import { useMediaQuery } from "react-responsive";
 import CardTablet from "./CardTablet/CardTablet";
 import CardMobile from "./CardMobile/CardMobile";
+import Modal from "shared/components/Modal/Modal";
+import Loading from "shared/components/Loading/Loading";
 
 const DoorCard = () => {
     const card = useSelector(selectDoorCard);
     const formValue = useSelector(selectFormValue);
     const isFormShow = useSelector(selectShowForm);
+    const isLoading = useSelector(selectIsLoading);
+
     const [selectText, setSelectText] = useState();
 
     const params = useParams();
@@ -87,34 +90,55 @@ const DoorCard = () => {
         return (
             <>
                 {isDesktop && (
-                    <CardDesktop
-                        select={select}
-                        selectText={selectText}
-                        onChange={handleSelect}
-                        handleClickImg={handleClickImg}
-                        bigImg={bigImg}
-                        handleSubmit={handleSubmit}
-                    />
+                    <>
+                        {isLoading && (
+                            <Modal>
+                                <Loading />
+                            </Modal>
+                        )}
+                        <CardDesktop
+                            select={select}
+                            selectText={selectText}
+                            onChange={handleSelect}
+                            handleClickImg={handleClickImg}
+                            bigImg={bigImg}
+                            handleSubmit={handleSubmit}
+                        />
+                    </>
                 )}
                 {isTablet && (
-                    <CardTablet
-                        select={select}
-                        selectText={selectText}
-                        onChange={handleSelect}
-                        handleClickImg={handleClickImg}
-                        bigImg={bigImg}
-                        handleSubmit={handleSubmit}
-                    />
+                    <>
+                        {isLoading && (
+                            <Modal>
+                                <Loading />
+                            </Modal>
+                        )}
+                        <CardTablet
+                            select={select}
+                            selectText={selectText}
+                            onChange={handleSelect}
+                            handleClickImg={handleClickImg}
+                            bigImg={bigImg}
+                            handleSubmit={handleSubmit}
+                        />
+                    </>
                 )}
                 {isMobile && (
-                    <CardMobile
-                        select={select}
-                        selectText={selectText}
-                        onChange={handleSelect}
-                        handleClickImg={handleClickImg}
-                        bigImg={bigImg}
-                        handleSubmit={handleSubmit}
-                    />
+                    <>
+                        {isLoading && (
+                            <Modal>
+                                <Loading />
+                            </Modal>
+                        )}
+                        <CardMobile
+                            select={select}
+                            selectText={selectText}
+                            onChange={handleSelect}
+                            handleClickImg={handleClickImg}
+                            bigImg={bigImg}
+                            handleSubmit={handleSubmit}
+                        />
+                    </>
                 )}
             </>
         );
